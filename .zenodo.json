@@ -22,6 +22,12 @@
       "relation": "isDocumentedBy",
       "resource_type": "publication-preprint",
       "scheme": "url"
+    },
+    {
+      "identifier": "https://huggingface.co/datasets/thanatchon36/from-space-to-sediment",
+      "relation": "isSupplementedBy",
+      "resource_type": "dataset",
+      "scheme": "url"
     }
   ]
 }
