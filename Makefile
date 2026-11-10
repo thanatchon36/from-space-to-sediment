@@ -1,7 +1,7 @@
 PY ?= .venv/bin/python
 REPS ?= 150
 
-.PHONY: setup data synthetic selftest network sim figures banner paper web arxiv hf test all clean
+.PHONY: setup data synthetic selftest network sim figures banner poster paper web arxiv hf test all clean
 
 setup:          ## create venv and install the package (needs uv)
 	uv venv .venv --python 3.12
@@ -27,6 +27,9 @@ figures:        ## redraw every paper figure and the generated numbers (needs ma
 
 banner:         ## README banner -> docs/assets/banner.png (needs make data)
 	$(PY) scripts/make_banner.py
+
+poster:         ## LinkedIn poster -> docs/assets/linkedin_poster.png (needs make data)
+	$(PY) scripts/make_poster.py
 
 paper:          ## paper/paper.md -> paper.tex -> paper.pdf (pandoc + tectonic) and the web reader docs/paper/
 	$(PY) -m from_space_to_sediment.cli paper
