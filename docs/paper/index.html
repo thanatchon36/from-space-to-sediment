@@ -1,0 +1,835 @@
+<!doctype html>
+<html lang="en" data-theme="auto">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>From Space to Sediment</title>
+<meta name="description" content="Preprint: multi-sensor satellite screening of e-waste sites in Thailand and attribution of river contamination in the Bang Pakong basin.">
+<meta name="author" content="Thanatchon Chongmankhong">
+<style>
+/* Web reader for paper/paper.tex, built by scripts/build_web.py: one reading column
+   (~46rem) with a results strip up top. System font stacks only: the page is a single self-contained
+   file with no third-party requests. Colour tokens on :root, redefined for dark. */
+:root {
+  --paper: #fbfbf9; --ink: #17191c; --ink-2: #4c5058; --rule: #dcdcd6;
+  --accent: #1f5fae; --accent-soft: #e6eef8;
+  --pos: #1d6b52; --pos-soft: #e3f1ea; --null: #6b6f78; --null-soft: #eeeeea;
+  --find: #8a5a12; --find-soft: #f6eedd; --plate: #ffffff; --quote: #f3f3ef;
+  --font-display: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --font-body: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #15171a; --ink: #e8e9ec; --ink-2: #a6abb4; --rule: #30343a;
+    --accent: #7fb0ec; --accent-soft: #1b2a3d; --pos: #7dcfac; --pos-soft: #16302a;
+    --null: #a6abb4; --null-soft: #23262b; --find: #e7bd73; --find-soft: #33291a;
+    --plate: #f4f4f2; --quote: #1d2024; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #15171a; --ink: #e8e9ec; --ink-2: #a6abb4; --rule: #30343a;
+  --accent: #7fb0ec; --accent-soft: #1b2a3d; --pos: #7dcfac; --pos-soft: #16302a;
+  --null: #a6abb4; --null-soft: #23262b; --find: #e7bd73; --find-soft: #33291a;
+  --plate: #f4f4f2; --quote: #1d2024; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 17px/1.62 var(--font-body); }
+.page { max-width: 46rem; margin: 0 auto; padding-inline: 16px; padding-block: 48px 72px;
+  display: flex; flex-direction: column; gap: 40px; }
+h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 650; text-wrap: balance; line-height: 1.2; }
+h1 { font-size: clamp(1.7rem, 4.2vw, 2.35rem); margin: 0; letter-spacing: -0.01em; }
+h2 { font-size: 1.4rem; margin: 2.2em 0 0.5em; }
+h3 { font-size: 1.12rem; margin: 1.8em 0 0.4em; }
+a { color: var(--accent); text-underline-offset: 2px; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
+code { font: 500 0.84em var(--font-mono); overflow-wrap: anywhere; }
+pre { background: var(--quote); border: 1px solid var(--rule); border-radius: 6px; padding: 12px 14px;
+  overflow-x: auto; font-size: 0.84rem; line-height: 1.5; }
+pre code { font-weight: 400; font-size: inherit; overflow-wrap: normal; }
+.masthead { display: flex; flex-direction: column; gap: 12px; border-bottom: 1px solid var(--rule); padding-bottom: 28px; }
+.kicker { margin: 0; font: 500 0.78rem var(--font-mono); text-transform: uppercase; letter-spacing: 0.09em; color: var(--accent); }
+.subtitle { margin: 0; font-style: italic; color: var(--ink-2); font-size: 1.05rem; }
+.byline { margin: 0; color: var(--ink-2); }
+.meta { margin: 0; font: 400 0.8rem/1.6 var(--font-mono); color: var(--ink-2); }
+.meta b { font-weight: 500; color: var(--ink); }
+.actions { display: flex; flex-wrap: wrap; gap: 8px; margin: 4px 0 0; padding: 0; list-style: none; }
+.actions a { display: inline-block; padding: 6px 12px; border: 1px solid var(--rule); border-radius: 999px;
+  font: 500 0.78rem var(--font-mono); text-decoration: none; color: var(--ink); }
+.actions a:hover { border-color: var(--accent); color: var(--accent); }
+.abstract h2, .results h2, .toc h2, .cite h2 { margin: 0 0 10px; font-size: 0.82rem; font-family: var(--font-mono);
+  font-weight: 500; text-transform: uppercase; letter-spacing: 0.09em; color: var(--ink-2); }
+.abstract-body p { margin: 0 0 0.8em; font-size: 1.04rem; }
+.abstract-body p:last-child { margin-bottom: 0; }
+.results .note { margin: 0 0 14px; color: var(--ink-2); font-size: 0.95rem; }
+.result-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr)); gap: 8px; }
+.r { display: grid; grid-template-columns: auto 1fr; grid-template-areas: "id tag" "text text"; gap: 2px 10px;
+  align-content: start; padding: 10px 12px; border-radius: 6px; border-left: 3px solid; font-size: 0.9rem; line-height: 1.4; }
+.r-pos { background: var(--pos-soft); border-color: var(--pos); }
+.r-ref { background: var(--find-soft); border-color: var(--find); }
+.r-null, .r-nf { background: var(--null-soft); border-color: var(--null); }
+.r-id { grid-area: id; font: 500 0.85rem var(--font-mono); }
+.r-text { grid-area: text; }
+.r-text small { display: block; color: var(--ink-2); font-size: 0.8rem; margin-top: 2px; }
+.toc ul { margin: 0; padding-left: 1.2em; columns: 2 14rem; column-gap: 32px; }
+.toc li { break-inside: avoid; }
+.toc ul ul { columns: 1; padding-left: 1em; font-size: 0.92em; color: var(--ink-2); }
+.toc a { text-decoration: none; }
+.toc a:hover { text-decoration: underline; }
+.paper h1 { font-size: 1.55rem; margin: 2em 0 0.5em; padding-top: 0.6em; border-top: 1px solid var(--rule); }
+.paper p, .paper li { hyphens: auto; }
+.paper p { margin: 0 0 1em; }
+.paper math[display="block"] { overflow-x: auto; max-width: 100%; }
+/* MathML does not line-break: a long inline formula scrolls on its own instead of widening the page */
+.paper p > math { display: inline-block; max-width: 100%; overflow-x: auto; overflow-y: hidden; }
+.paper .header-section-number { color: var(--accent); margin-right: 0.5em; font-family: var(--font-mono); font-size: 0.85em; font-weight: 500; }
+.paper blockquote { margin: 1.2em 0; padding: 10px 16px; border-left: 3px solid var(--rule); background: var(--quote);
+  border-radius: 0 6px 6px 0; font-size: 0.93rem; color: var(--ink-2); }
+.paper blockquote p:last-child { margin-bottom: 0; }
+figure { margin: 1.6em 0; display: flex; flex-direction: column; gap: 10px; }
+figure img { background: var(--plate); padding: 12px; border-radius: 6px; border: 1px solid var(--rule); max-width: 100%; height: auto; }
+figcaption, caption, .tcap { font-size: 0.88rem; color: var(--ink-2); line-height: 1.45; text-align: left; }
+caption { caption-side: top; padding-bottom: 8px; }
+.tbl { margin: 1.6em 0; }
+.paper .tcap { margin: 0 0 8px; hyphens: auto; }
+.tscroll { overflow-x: auto; }
+/* Tables keep their natural width (scrolling sideways when wider than the column); only long text cells wrap. */
+.paper table { border-collapse: collapse; width: max-content; min-width: 100%;
+  font: 400 0.78rem/1.45 var(--font-mono); font-variant-numeric: tabular-nums; }
+.paper td { max-width: 17em; }
+/* Code in table cells must not break per letter on phones; the table scrolls sideways instead. */
+.paper table code { overflow-wrap: normal; word-break: normal; white-space: nowrap; }
+th, td { padding: 6px 10px; border-bottom: 1px solid var(--rule); text-align: left; vertical-align: top; }
+th { font-weight: 500; color: var(--ink-2); border-bottom-color: var(--ink-2); }
+.paper strong { font-weight: 650; }
+.paper .eq { display: flex; align-items: center; gap: 12px; margin: 1em 0; }
+.paper .eq-math { flex: 1; min-width: 0; overflow-x: auto; overflow-y: hidden; }
+.paper .eqno { font: 400 0.85rem var(--font-mono); color: var(--ink-2); }
+.paper #refs { font-size: 0.9rem; }
+.paper .csl-entry { margin: 0 0 0.6em; padding-left: 1.5em; text-indent: -1.5em; overflow-wrap: anywhere; }
+.cite { min-width: 0; }
+/* BibTeX keeps its lines intact (no mid-URL breaks); the block scrolls sideways on narrow screens. */
+.cite pre { overflow-x: auto; }
+.cite pre, .cite pre code { white-space: pre; overflow-wrap: normal; word-break: normal; }
+.colophon { border-top: 1px solid var(--rule); padding-top: 20px; color: var(--ink-2); font-size: 0.85rem; }
+.colophon p { margin: 0 0 0.7em; }
+@media (max-width: 480px) { body { font-size: 16px; } .page { padding-block: 28px 48px; gap: 28px; } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+<div class="page">
+<header class="masthead">
+  <p class="kicker">Preprint · from-space-to-sediment</p>
+  <h1>From Space to Sediment</h1>
+  <p class="subtitle">An Integrated Multi-Sensor Remote Sensing and Geochemical Fingerprinting Framework for Detecting E-Waste Hotspots and Attributing River Contamination in Thailand</p>
+  <p class="byline">Thanatchon Chongmankhong · <a href="https://github.com/thanatchon36/from-space-to-sediment">github.com/thanatchon36/from-space-to-sediment</a></p>
+  <p class="meta"><b>November 2026</b> · electronic waste, remote sensing, multi-sensor fusion, source apportionment, lead isotopes, spatial stream networks, Basel Convention, Thailand</p>
+  <ul class="actions"><li><a href="paper.pdf">Download PDF</a></li><li><a href="https://github.com/thanatchon36/from-space-to-sediment">Code and replication</a></li></ul>
+</header>
+<section class="abstract" aria-label="Abstract">
+  <h2>Abstract</h2>
+  <div class="abstract-body"><p>Informal processing and dumping of electronic waste (e-waste) release trace metals and persistent organic pollutants into soils, air and rivers. In Thailand, enforcement since 2018 has repeatedly uncovered unlicensed processing facilities in the eastern provinces, and household-scale dismantling persists in the Northeast, yet no systematic national inventory of such sites exists, their response to trade-policy shocks has not been quantified, and the contribution of individual sites to downstream river contamination has not been established. Satellites cannot observe e-waste directly and the contaminants of concern are not optically active, so neither remote sensing nor field sampling alone can close this gap. We present <em>From Space to Sediment</em>, a framework that couples three modules. Module 1 detects candidate processing and dumping sites nationwide from thermal, optical, synthetic aperture radar, night-time light and imaging-spectroscopy proxies, using positive–unlabelled learning, calibrated site probabilities, design-based accuracy assessment and a gap analysis against the national factory registry. Module 2 dates the emergence of sites and estimates their displacement around China’s 2018 waste-import ban and the 2025 entry into force of the Basel Convention e-waste amendments, using heterogeneity-robust event-study designs. Module 3 attributes river contamination in the Bang Pakong basin by combining spatial stream-network models, an e-waste-specific geochemical marker suite, lead-isotope mixing models and <sup>210</sup>Pb-dated sediment cores. A site is reported as an attributed source only when four independent lines of evidence converge: detection, hydrological connectivity, geochemical consistency and chronological agreement. An open implementation computed exact along-network distances on the real Bang Pakong river network, and in 600 simulated scenarios the attributed level reached a precision of 0.85–0.95; the simulations also showed that a count-based rule was too permissive, so geochemical evidence is now required for a probable attribution. We specify data, sampling designs, hypotheses, identification assumptions and legal safeguards, including the reporting of candidate sites rather than allegations. Empirical results on real data will be reported separately.</p></div>
+</section>
+<section class="results" aria-label="Results at a glance">
+  <h2>Results at a glance</h2>
+  <p class="note">Headline numbers from the implementation checks and simulations (paper/sim_numbers.tex). They use the real Bang Pakong river network with synthetic sites and stations, so they validate the method, not any real site. Amber: simulation results; grey: pending.</p>
+  <ul class="result-list"><li class="r r-ref"><span class="r-id">Network check</span><span class="r-text">Exact along-network distances on 240 real Bang Pakong reaches<small>658 km of channel; 500 random point pairs agree with merged path lines to within 1e-9 m</small></span></li>
+<li class="r r-ref"><span class="r-id">Attributed level</span><span class="r-text">Precision 0.85–0.95 when all four criteria (C1–C4) agree<small>recall 0.18–0.35 of attributable sources across the three decay-length scenarios</small></span></li>
+<li class="r r-ref"><span class="r-id">Evidence rule</span><span class="r-text">Requiring geochemistry (C1–C3) lifts probable precision from 0.54–0.65 to 0.84–0.90<small>the original count-based rule (any three criteria) was too permissive</small></span></li>
+<li class="r r-ref"><span class="r-id">Association test</span><span class="r-text">Power 48%, 89% and 98% at λ = 3, 8 and 20 km<small>type I error 7.3% under the null (95% interval 4.1–12.7%), above the nominal 5%</small></span></li>
+<li class="r r-ref"><span class="r-id">Registry flags</span><span class="r-text">0 mismatches with the geometric truth in 600 simulated replicates<small>registry, known-site and hard-negative flags use exact distance tests</small></span></li>
+<li class="r r-null"><span class="r-id">Real data</span><span class="r-text">Real-data results pending<small>every number here comes from simulations on the real network with synthetic sites and stations</small></span></li></ul>
+</section>
+<nav class="toc" aria-label="Contents"><h2>Contents</h2>
+<ul>
+<li><a href="#sec:intro" id="toc-sec:intro"><span class="toc-section-number">1</span> Introduction</a></li>
+<li><a href="#sec:background" id="toc-sec:background"><span class="toc-section-number">2</span> Background</a></li>
+<li><a href="#sec:study" id="toc-sec:study"><span class="toc-section-number">3</span> Study area</a></li>
+<li><a href="#sec:framework" id="toc-sec:framework"><span class="toc-section-number">4</span> Framework overview</a></li>
+<li><a href="#sec:m1" id="toc-sec:m1"><span class="toc-section-number">5</span> Module 1: detection and national inventory</a></li>
+<li><a href="#sec:m2" id="toc-sec:m2"><span class="toc-section-number">6</span> Module 2: dynamics and policy displacement</a></li>
+<li><a href="#sec:m3" id="toc-sec:m3"><span class="toc-section-number">7</span> Module 3: river source attribution in the Bang Pakong basin</a></li>
+<li><a href="#sec:synthesis" id="toc-sec:synthesis"><span class="toc-section-number">8</span> Evidence synthesis</a></li>
+<li><a href="#sec:validation" id="toc-sec:validation"><span class="toc-section-number">9</span> Implementation and simulation-based validation</a></li>
+<li><a href="#sec:ethics" id="toc-sec:ethics"><span class="toc-section-number">10</span> Ethical, legal and safety safeguards</a></li>
+<li><a href="#sec:discussion" id="toc-sec:discussion"><span class="toc-section-number">11</span> Expected contributions and limitations</a></li>
+<li><a href="#sec:plan" id="toc-sec:plan"><span class="toc-section-number">12</span> Work plan</a></li>
+<li><a href="#sec:conclusion" id="toc-sec:conclusion"><span class="toc-section-number">13</span> Conclusion</a></li>
+<li><a href="#data-and-code-availability" id="toc-data-and-code-availability">Data and code availability</a></li>
+<li><a href="#use-of-ai-tools" id="toc-use-of-ai-tools">Use of AI tools</a></li>
+<li><a href="#references" id="toc-references">References</a></li>
+</ul>
+</nav>
+<article class="paper">
+<h1 data-number="1" id="sec:intro"><span class="header-section-number">1</span> Introduction</h1>
+<p>The world generated an estimated 62 million tonnes of electronic waste (e-waste) in 2022, of which only 22.3% was documented as formally collected and recycled <span class="citation" data-cites="balde2024">(<a href="#ref-balde2024" role="doc-biblioref"><span class="nocase">Baldé et al.</span> 2024</a>)</span>. The remainder is stored, landfilled, traded or processed informally, typically through manual dismantling, open burning of cables and casings, heating and acid leaching of printed circuit boards, and crude smelting <span class="citation" data-cites="robinson2009 wong2007">(<a href="#ref-robinson2009" role="doc-biblioref">Robinson 2009</a>; <a href="#ref-wong2007" role="doc-biblioref"><span class="nocase">Wong et al.</span> 2007</a>)</span>. These practices release lead (Pb), cadmium (Cd), copper (Cu), antimony (Sb) and other metals, together with brominated flame retardants and dioxin-like compounds, into air, dust, soils and surface waters, with documented consequences for human health <span class="citation" data-cites="leung2008 grant2013">(<a href="#ref-leung2008" role="doc-biblioref">Leung et al. 2008</a>; <a href="#ref-grant2013" role="doc-biblioref">Grant et al. 2013</a>)</span>.</p>
+<p>The geography of informal processing is not static. Trade in electronic discards responds to regulation, prices and enforcement <span class="citation" data-cites="lepawsky2015">(<a href="#ref-lepawsky2015" role="doc-biblioref">Lepawsky 2015</a>)</span>, and China’s 2018 restrictions on imports of solid waste redirected large volumes of scrap towards Southeast Asia <span class="citation" data-cites="brooks2018">(<a href="#ref-brooks2018" role="doc-biblioref">Brooks et al. 2018</a>)</span>. In Thailand, enforcement actions from 2018 onwards uncovered recycling facilities processing imported e-waste in the eastern provinces, while household-scale dismantling in the Northeast predates these shocks and is supplied largely through domestic collection <span class="citation" data-cites="puangprasert2019">(<a href="#ref-puangprasert2019" role="doc-biblioref">Puangprasert and Prueksasit 2019</a>)</span>. Exposure studies have documented brominated flame retardants at Thai e-waste storage facilities <span class="citation" data-cites="muenhor2010">(<a href="#ref-muenhor2010" role="doc-biblioref">Muenhor et al. 2010</a>)</span>, but the spatial extent of processing and its consequences for river systems remain poorly characterised.</p>
+<p>Three gaps motivate this work. First, there is no national inventory: enforcement is largely reactive and complaint-driven, so known sites form a biased sample of the true distribution. Second, the dynamics are unknown: it is unclear whether policy shocks reduced processing or displaced it to new districts, a question analogous to the pollution-haven hypothesis in the trade-and-environment literature <span class="citation" data-cites="copeland2004">(<a href="#ref-copeland2004" role="doc-biblioref">Copeland and Taylor 2004</a>)</span>. Third, attribution is weak: metals in rivers have many sources, tidal rivers mix bidirectionally, and existing studies typically report concentrations near suspected sites without quantitatively linking them to upstream sources.</p>
+<p>Remote sensing and field geochemistry have complementary blind spots. Satellites observe proxies of activity—heat, new structures, material piles, night-time lighting and water-colour anomalies—but not e-waste itself, and the contaminants of concern are not optically active. Field geochemistry measures contaminants precisely but at few locations, and without a source inventory it cannot establish where contamination originates. Linking the two requires an explicit chain of evidence from orbit to sediment. This paper proposes such a chain. Its contributions are:</p>
+<ol>
+<li><p>an integrated framework linking national-scale satellite detection, policy-driven dynamics and river source attribution (Figure <a href="#fig:framework">2</a>);</p></li>
+<li><p>an observation model that maps processing activities to remotely sensed proxies, sensors and confounders (Table <a href="#tab:obsmodel">2</a> and Figure <a href="#fig:sensors">3</a>);</p></li>
+<li><p>a quasi-experimental design for estimating the emergence and displacement of processing sites around trade-policy shocks (Figure <a href="#fig:timeline">4</a>);</p></li>
+<li><p>a four-criterion rule that reports a site as a contamination source only when detection, hydrological connectivity, geochemistry and chronology agree (Figure <a href="#fig:attribution">5</a>);</p></li>
+<li><p>a protocol of legal, ethical and safety safeguards for mapping suspected illegal activity; and</p></li>
+<li><p>an open implementation, checked on the real Bang Pakong river network and evaluated in simulations that led to a stricter evidence rule (Section <a href="#sec:validation">9</a>).</p></li>
+</ol>
+<p>Section <a href="#sec:background">2</a> reviews the background and Section <a href="#sec:study">3</a> describes the study area. Section <a href="#sec:framework">4</a> introduces the framework, Sections <a href="#sec:m1">5</a>, <a href="#sec:m2">6</a> and <a href="#sec:m3">7</a> detail its three modules, Section <a href="#sec:synthesis">8</a> describes evidence synthesis and Section <a href="#sec:validation">9</a> reports the implementation and its validation. Section <a href="#sec:ethics">10</a> sets out safeguards, Section <a href="#sec:discussion">11</a> discusses expected contributions and limitations, and Section <a href="#sec:plan">12</a> presents the work plan. The framework and analysis plan are specified in advance; empirical results will be reported in companion studies.</p>
+<h1 data-number="2" id="sec:background"><span class="header-section-number">2</span> Background</h1>
+<h2 data-number="2.1" id="environmental-signatures-of-informal-processing"><span class="header-section-number">2.1</span> Environmental signatures of informal processing</h2>
+<p>Informal e-waste processing combines activities with distinct footprints. Manual dismantling and sorting take place in roofed sheds or open yards and produce piles of casings, cables and boards. Cable insulation and plastics are burned to recover copper, generating brief, small fires and dense smoke. Printed circuit boards are heated to remove components or leached with acids to recover precious metals, producing acidic, metal-rich effluents. Residues are stockpiled, buried, or dumped into ponds and abandoned excavation pits. These activities leave potentially observable traces—thermal anomalies, changes in roofs and bare surfaces, heterogeneous material spectra, persistent night-time lighting and anomalous colour in small water bodies—but none of these traces is unique to e-waste. The framework therefore treats detection as probabilistic and evidence-based rather than as direct identification.</p>
+<h2 data-number="2.2" id="remote-sensing-of-waste-sites"><span class="header-section-number">2.2</span> Remote sensing of waste sites</h2>
+<p>Deep learning applied to satellite and aerial imagery now supports the detection of landfills and dumpsites at regional to global scales <span class="citation" data-cites="sun2023 torres2023">(<a href="#ref-sun2023" role="doc-biblioref"><span class="nocase">Sun et al.</span> 2023</a>; <a href="#ref-torres2023" role="doc-biblioref">Torres and Fraternali 2023</a>)</span>, and Sentinel-2 time series have been used to monitor terrestrial plastic-waste sites <span class="citation" data-cites="kruse2023">(<a href="#ref-kruse2023" role="doc-biblioref"><span class="nocase">Kruse et al.</span> 2023</a>)</span>. These studies target large, persistent waste bodies. Informal e-waste processing differs: individual sites are often smaller than a hectare, partly roofed and intermittently active. Thermal detection is also challenging. The VIIRS 375 m active-fire product detects smaller fires than earlier 1 km products <span class="citation" data-cites="schroeder2014">(<a href="#ref-schroeder2014" role="doc-biblioref">Schroeder et al. 2014</a>)</span>, and Landsat-8 OLI supports active-fire detection at 30 m <span class="citation" data-cites="schroeder2016">(<a href="#ref-schroeder2016" role="doc-biblioref">Schroeder et al. 2016</a>)</span>, but brief cable fires remain close to detection limits, and dry-season agricultural burning in Thailand produces a large background of genuine fire detections. Plastics have diagnostic short-wave infrared absorption features <span class="citation" data-cites="garaba2018">(<a href="#ref-garaba2018" role="doc-biblioref">Garaba and Dierssen 2018</a>)</span> that spaceborne imaging spectrometers such as EnMAP and PRISMA can in principle resolve <span class="citation" data-cites="guanter2015 cogliati2021">(<a href="#ref-guanter2015" role="doc-biblioref"><span class="nocase">Guanter et al.</span> 2015</a>; <a href="#ref-cogliati2021" role="doc-biblioref"><span class="nocase">Cogliati et al.</span> 2021</a>)</span>, although a typical processing yard is spectrally mixed within a 30 m pixel. Colour anomalies of small water bodies can be quantified with the Forel–Ule scale and hue angle <span class="citation" data-cites="vanderwoerd2015">(<a href="#ref-vanderwoerd2015" role="doc-biblioref">Woerd and Wernand 2015</a>)</span>.</p>
+<h2 data-number="2.3" id="source-attribution-of-trace-contaminants-in-rivers"><span class="header-section-number">2.3</span> Source attribution of trace contaminants in rivers</h2>
+<p>Receptor models such as positive matrix factorisation (PMF) resolve measured concentrations into source profiles and contributions <span class="citation" data-cites="paatero1994 norris2014">(<a href="#ref-paatero1994" role="doc-biblioref">Paatero and Tapper 1994</a>; <a href="#ref-norris2014" role="doc-biblioref">Norris et al. 2014</a>)</span>, and Bayesian mixing models estimate source proportions from tracers with explicit uncertainty <span class="citation" data-cites="stock2018">(<a href="#ref-stock2018" role="doc-biblioref">Stock et al. 2018</a>)</span>. Lead isotope ratios are among the most informative tracers because geogenic, industrial and gasoline-derived lead often carry distinct signatures <span class="citation" data-cites="komarek2008">(<a href="#ref-komarek2008" role="doc-biblioref">Komárek et al. 2008</a>)</span>. Spatial stream-network (SSN) models represent dependence along flow-connected and flow-unconnected paths in river networks <span class="citation" data-cites="verhoef2010 peterson2013">(<a href="#ref-verhoef2010" role="doc-biblioref">Ver Hoef and Peterson 2010</a>; <a href="#ref-peterson2013" role="doc-biblioref"><span class="nocase">Peterson et al.</span> 2013</a>)</span> and are implemented in open software <span class="citation" data-cites="dumelle2024">(<a href="#ref-dumelle2024" role="doc-biblioref">Dumelle et al. 2024</a>)</span>. Dated sediment cores reconstruct contamination histories, typically using <sup>210</sup>Pb chronologies <span class="citation" data-cites="appleby1978">(<a href="#ref-appleby1978" role="doc-biblioref">Appleby and Oldfield 1978</a>)</span>. In estuaries, salinity alters trace-metal partitioning, for example by promoting Cd desorption through chloride complexation <span class="citation" data-cites="dulaing2009">(<a href="#ref-dulaing2009" role="doc-biblioref">Du Laing et al. 2009</a>)</span>.</p>
+<h2 data-number="2.4" id="the-thai-context"><span class="header-section-number">2.4</span> The Thai context</h2>
+<p>Thailand regulates factories under the Factory Act B.E. 2535 (1992). Waste-sorting and recycling facilities are licensed in dedicated factory categories (notably categories 105 and 106), and the resulting registry provides a reference for distinguishing licensed from unlicensed activity. The Pollution Control Department monitors surface-water quality in major rivers. The eastern provinces, including those of the Eastern Economic Corridor, combine dense industrial land use, port access through Laem Chabang and repeated reports of unlicensed processing, whereas the Northeast hosts village-scale dismantling linked to domestic collection networks. Monsoon cloud cover, roughly from May to October, limits optical observation, and dry-season agricultural burning, roughly from December to April, dominates thermal anomalies. Internationally, amendments to the Basel Convention adopted in 2022 extended prior-informed-consent controls to all e-waste from 1 January 2025 <span class="citation" data-cites="basel2022">(<a href="#ref-basel2022" role="doc-biblioref">Secretariat of the Basel Convention 2022</a>)</span>, and the 2022 edition of the Harmonized System introduced heading 8549 for electrical and electronic waste and scrap, which improves the traceability of trade statistics.</p>
+<h1 data-number="3" id="sec:study"><span class="header-section-number">3</span> Study area</h1>
+<p>The national domain covers Thailand’s 77 provinces (about 513<span>,</span>000 km<sup>2</sup>). Two case regions represent contrasting modes of processing (Figure <a href="#fig:study">1</a>). The eastern case region is the Bang Pakong river system, formed by the confluence of the Prachin Buri and Nakhon Nayok rivers and discharging to the upper Gulf of Thailand. In the HydroRIVERS network <span class="citation" data-cites="lehner2013">(<a href="#ref-lehner2013" role="doc-biblioref">Lehner and Grill 2013</a>)</span>, the basin drains about 22<span>,</span>000 km<sup>2</sup> at its outlet, with a modelled long-term mean discharge of about 480 m<sup>3</sup> s<sup><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mn>1</mn></mrow><annotation encoding="application/x-tex">-1</annotation></semantics></math></sup>. Its lower reach is tidal and subject to saline intrusion in the dry season, and its floodplain is flood-prone. The basin spans Prachin Buri and Chachoengsao, two provinces with repeated reports of industrial-scale processing. The northeastern case region spans the Chi and Mun basins, where household-scale dismantling and open burning have been reported in Kalasin and Buri Ram. Rayong, in the East Coast basin, provides a hazardous industrial-waste context that is useful for testing the specificity of detection (Table <a href="#tab:seeds">1</a>).</p>
+<figure id="fig:study" data-latex-placement="p">
+<img loading="lazy" src="figures/fig1_study_area.png" />
+<figcaption><b>Figure 1.</b> Study context. (a) Thailand, with provinces where industrial-scale e-waste processing or related enforcement (East) and household-scale dismantling and open burning (Northeast) have been publicly reported. Markers show example districts used as seed localities, boxes show the extents of panels b and c, and the inset locates Thailand in Southeast Asia. (b) Eastern case region with the Bang Pakong river system (dark blue), the proposed case basin for Module 3. (c) Northeastern case region in the Chi and Mun basins. Hatched polygons are example districts shown at district level only; they are not findings about any facility or community, and province categories will be re-verified against primary records. Projection: Albers equal-area conic (standard parallels 8°N and 18°N, central meridian 101°E). Data: Natural Earth <span class="citation" data-cites="naturalearth">(<a href="#ref-naturalearth" role="doc-biblioref">Natural Earth 2026</a>)</span>; HydroRIVERS v1.0 <span class="citation" data-cites="lehner2013">(<a href="#ref-lehner2013" role="doc-biblioref">Lehner and Grill 2013</a>)</span>; OpenGISData-Thailand <span class="citation" data-cites="opengis">(<a href="#ref-opengis" role="doc-biblioref">OpenGISData-Thailand contributors 2026</a>)</span>.</figcaption>
+</figure>
+<div id="tab:seeds">
+<div class="tbl"><p class="tcap"><b>Table 1.</b> Seed localities used to define training and validation strata. Entries are compiled from public media, enforcement and NGO reports and are given at district level only; they define sampling strata and are not findings or allegations about any facility or community. All entries will be re-verified against primary records during data curation.</p><div class="tscroll"><table>
+<thead>
+<tr>
+<th style="text-align: left;">Region</th>
+<th style="text-align: left;">Province</th>
+<th style="text-align: left;">Example district</th>
+<th style="text-align: left;">Reported setting</th>
+<th style="text-align: left;">River basin</th>
+<th style="text-align: left;">Role in the framework</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">East</td>
+<td style="text-align: left;">Prachin Buri</td>
+<td style="text-align: left;">Si Mahosot</td>
+<td style="text-align: left;">Industrial-scale processing cluster</td>
+<td style="text-align: left;">Bang Pakong</td>
+<td style="text-align: left;">Training seeds; Module 3 case basin</td>
+</tr>
+<tr>
+<td style="text-align: left;">East</td>
+<td style="text-align: left;">Chachoengsao</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">Industrial-scale processing; enforcement since 2018</td>
+<td style="text-align: left;">Bang Pakong</td>
+<td style="text-align: left;">Training seeds; Module 3 case basin</td>
+</tr>
+<tr>
+<td style="text-align: left;">East</td>
+<td style="text-align: left;">Chon Buri</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">Recycling facilities in the port hinterland</td>
+<td style="text-align: left;">East Coast, Bang Pakong</td>
+<td style="text-align: left;">Seeds; port-exposure variable (Module 2)</td>
+</tr>
+<tr>
+<td style="text-align: left;">East</td>
+<td style="text-align: left;">Rayong</td>
+<td style="text-align: left;">Ban Khai</td>
+<td style="text-align: left;">Hazardous industrial-waste storage incident</td>
+<td style="text-align: left;">East Coast</td>
+<td style="text-align: left;">Specificity test (non-e-waste analogue)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Northeast</td>
+<td style="text-align: left;">Kalasin</td>
+<td style="text-align: left;">Khong Chai</td>
+<td style="text-align: left;">Household-scale dismantling and open burning</td>
+<td style="text-align: left;">Chi</td>
+<td style="text-align: left;">Seeds; burning discrimination</td>
+</tr>
+<tr>
+<td style="text-align: left;">Northeast</td>
+<td style="text-align: left;">Buri Ram</td>
+<td style="text-align: left;">Ban Mai Chaiyaphot</td>
+<td style="text-align: left;">Household-scale dismantling and open burning</td>
+<td style="text-align: left;">Mun</td>
+<td style="text-align: left;">Seeds; burning discrimination</td>
+</tr>
+</tbody>
+</table></div></div>
+</div>
+<h1 data-number="4" id="sec:framework"><span class="header-section-number">4</span> Framework overview</h1>
+<p>The framework (Figure <a href="#fig:framework">2</a>) follows five design principles.</p>
+<ol>
+<li><p><em>Proxy-based detection with an explicit observation model.</em> Each sensor is used for a stated proxy with stated confounders (Table <a href="#tab:obsmodel">2</a>).</p></li>
+<li><p><em>Convergence of independent evidence.</em> No single line of evidence suffices to attribute contamination to a site.</p></li>
+<li><p><em>Temporal consistency.</em> Causes must precede effects, so satellite-derived emergence dates constrain admissible sources.</p></li>
+<li><p><em>Uncertainty propagation.</em> Detection probabilities, model uncertainty and analytical uncertainty are carried through to attribution.</p></li>
+<li><p><em>Safeguards by design.</em> Outputs are probabilistic candidates, published at aggregated resolution.</p></li>
+</ol>
+<p>Module 1 produces a candidate-site inventory <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝒮</mi><mo>=</mo><mo stretchy="false" form="prefix">{</mo><mo stretchy="false" form="prefix">(</mo><msub><mi>𝐬</mi><mi>i</mi></msub><mo>,</mo><msub><mi>p</mi><mi>i</mi></msub><mo>,</mo><msub><mi>t</mi><mi>i</mi></msub><mo>,</mo><msub><mi>a</mi><mi>i</mi></msub><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">\mathcal{S}=\{(\mathbf{s}_i,p_i,t_i,a_i)\}</annotation></semantics></math>, where <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐬</mi><mi>i</mi></msub><annotation encoding="application/x-tex">\mathbf{s}_i</annotation></semantics></math> is the location of site <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>p</mi><mi>i</mi></msub><annotation encoding="application/x-tex">p_i</annotation></semantics></math> the calibrated probability that it hosts e-waste processing or dumping, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>t</mi><mi>i</mi></msub><annotation encoding="application/x-tex">t_i</annotation></semantics></math> its emergence date and <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>a</mi><mi>i</mi></msub><annotation encoding="application/x-tex">a_i</annotation></semantics></math> an activity index. Module 2 uses <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝒮</mi><annotation encoding="application/x-tex">\mathcal{S}</annotation></semantics></math> to analyse dynamics, Module 3 uses it as the source inventory for attribution, and a synthesis step combines the evidence (Section <a href="#sec:synthesis">8</a>).</p>
+<figure id="fig:framework" data-latex-placement="t">
+<img loading="lazy" src="figures/fig2_framework.png" />
+<figcaption><b>Figure 2.</b> The <em>From Space to Sediment</em> framework. Earth-observation proxies feed Module 1, which produces a candidate-site inventory with calibrated probabilities <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>p</mi><mi>i</mi></msub><annotation encoding="application/x-tex">p_i</annotation></semantics></math>, emergence dates <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>t</mi><mi>i</mi></msub><annotation encoding="application/x-tex">t_i</annotation></semantics></math> and activity indices <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>a</mi><mi>i</mi></msub><annotation encoding="application/x-tex">a_i</annotation></semantics></math>. Module 2 analyses the dynamics of the inventory around policy shocks, and Module 3 uses it as the source inventory for river attribution. Evidence is combined by a four-criterion rule, and outputs are subject to the safeguards in Section <a href="#sec:ethics">10</a>.</figcaption>
+</figure>
+<div id="tab:obsmodel">
+<div class="tbl"><p class="tcap"><b>Table 2.</b> Observation model: remotely sensed proxies of e-waste processing and dumping, their physical basis, primary sensors and principal confounders.</p><div class="tscroll"><table>
+<thead>
+<tr>
+<th style="text-align: left;">Proxy</th>
+<th style="text-align: left;">Physical basis</th>
+<th style="text-align: left;">Primary sensors</th>
+<th style="text-align: left;">Principal confounders</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Open burning and hot targets</td>
+<td style="text-align: left;">Emitted radiance at 3.7–4 μm and 10–12 μm; SWIR response of very hot targets</td>
+<td style="text-align: left;">VIIRS I-band, Landsat 8/9, ECOSTRESS, SDGSAT-1 TIS, Sentinel-2 SWIR</td>
+<td style="text-align: left;">Agricultural burning, furnaces and flares, hot metal roofs</td>
+</tr>
+<tr>
+<td style="text-align: left;">New structures and waste piles</td>
+<td style="text-align: left;">Reflectance and texture change; SAR backscatter and coherence change</td>
+<td style="text-align: left;">Sentinel-2, PlanetScope, VHR, Sentinel-1, ALOS-2/4, NISAR</td>
+<td style="text-align: left;">Warehouses, construction, licensed scrapyards, farm sheds</td>
+</tr>
+<tr>
+<td style="text-align: left;">Material composition</td>
+<td style="text-align: left;">SWIR absorption by hydrocarbons in plastics; spectra of metals and ash</td>
+<td style="text-align: left;">EnMAP, PRISMA, EMIT</td>
+<td style="text-align: left;">Construction plastics, landfills, mixed pixels</td>
+</tr>
+<tr>
+<td style="text-align: left;">Night-time activity</td>
+<td style="text-align: left;">Radiance from artificial lighting</td>
+<td style="text-align: left;">VIIRS DNB (Black Marble), SDGSAT-1 Glimmer</td>
+<td style="text-align: left;">New housing, roads, changes in lighting technology</td>
+</tr>
+<tr>
+<td style="text-align: left;">Water-colour anomalies</td>
+<td style="text-align: left;">Hue-angle shift and turbidity in ponds and pits</td>
+<td style="text-align: left;">Sentinel-2, PlanetScope</td>
+<td style="text-align: left;">Algal blooms, excavation turbidity, aquaculture</td>
+</tr>
+<tr>
+<td style="text-align: left;">Smoke and trace gases</td>
+<td style="text-align: left;">Column CO, NO<sub>2</sub> and aerosol index</td>
+<td style="text-align: left;">Sentinel-5P TROPOMI, GEMS</td>
+<td style="text-align: left;">Biomass burning, traffic, industry (regional context only)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Hydrological connectivity</td>
+<td style="text-align: left;">Elevation, flow routing and inundation</td>
+<td style="text-align: left;">FABDEM, Copernicus DEM, MERIT Hydro, Sentinel-1 floods, SWOT</td>
+<td style="text-align: left;">Canals and pumping in flat terrain, poorly represented in DEMs</td>
+</tr>
+</tbody>
+</table></div></div>
+</div>
+<h1 data-number="5" id="sec:m1"><span class="header-section-number">5</span> Module 1: detection and national inventory</h1>
+<h2 data-number="5.1" id="data-and-features"><span class="header-section-number">5.1</span> Data and features</h2>
+<p>Module 1 draws on the sensor portfolio in Figure <a href="#fig:sensors">3</a>. Sentinel-2 <span class="citation" data-cites="drusch2012">(<a href="#ref-drusch2012" role="doc-biblioref"><span class="nocase">Drusch et al.</span> 2012</a>)</span> and Sentinel-1 <span class="citation" data-cites="torres2012">(<a href="#ref-torres2012" role="doc-biblioref"><span class="nocase">Torres et al.</span> 2012</a>)</span> form the national backbone at 10–20 m resolution. Thermal products from VIIRS, Landsat 8/9, ECOSTRESS and SDGSAT-1 provide evidence of burning and hot targets <span class="citation" data-cites="schroeder2014 schroeder2016 fisher2020 guo2023">(<a href="#ref-schroeder2014" role="doc-biblioref">Schroeder et al. 2014</a>, <a href="#ref-schroeder2016" role="doc-biblioref">2016</a>; <a href="#ref-fisher2020" role="doc-biblioref"><span class="nocase">Fisher et al.</span> 2020</a>; <a href="#ref-guo2023" role="doc-biblioref"><span class="nocase">Guo et al.</span> 2023</a>)</span>; VIIRS Black Marble <span class="citation" data-cites="roman2018">(<a href="#ref-roman2018" role="doc-biblioref"><span class="nocase">Román et al.</span> 2018</a>)</span> and SDGSAT-1 Glimmer capture night-time activity; and the Landsat archive <span class="citation" data-cites="masek2020">(<a href="#ref-masek2020" role="doc-biblioref">Masek et al. 2020</a>)</span> extends change histories. PlanetScope, THEOS-2 and commercial very-high-resolution (VHR) imagery are used for verification rather than wall-to-wall mapping. Features are computed per 10 m pixel and aggregated to candidate objects. They include seasonal spectral composites and indices, SAR backscatter statistics and interferometric coherence change <span class="citation" data-cites="preiss2006">(<a href="#ref-preiss2006" role="doc-biblioref">Preiss et al. 2006</a>)</span>, the recurrence and timing of thermal anomalies, night-time radiance trends and texture measures. Embeddings from geospatial foundation models, such as AlphaEarth Foundations <span class="citation" data-cites="brown2025">(<a href="#ref-brown2025" role="doc-biblioref"><span class="nocase">Brown et al.</span> 2025</a>)</span> and Prithvi-EO-2.0 <span class="citation" data-cites="szwarcman2024">(<a href="#ref-szwarcman2024" role="doc-biblioref"><span class="nocase">Szwarcman et al.</span> 2024</a>)</span>, are evaluated as additional features because they can reduce the number of labels required. Processing is implemented in Google Earth Engine <span class="citation" data-cites="gorelick2017">(<a href="#ref-gorelick2017" role="doc-biblioref">Gorelick et al. 2017</a>)</span> and open-source Python.</p>
+<figure id="fig:sensors" data-latex-placement="t">
+<img loading="lazy" src="figures/fig3_sensor_portfolio.png" />
+<figcaption><b>Figure 3.</b> Sensor portfolio. Filled circles mark a primary role and open circles a supporting role for each proxy: open burning and hot targets; structures and waste piles; all-weather surface change; night-time activity; material identification; smoke and trace gases; water colour and turbidity; and hydrological connectivity. Bars show nominal spatial resolution, with ranges where modes or bands differ. Revisit values are nominal and vary with acquisition planning, latitude and cloud cover.</figcaption>
+</figure>
+<h2 data-number="5.2" id="reference-data-and-labelling"><span class="header-section-number">5.2</span> Reference data and labelling</h2>
+<p>Positive examples are compiled from enforcement records, NGO and media reports, VHR photo-interpretation and field verification. Because these sources over-represent sites that attracted complaints or enforcement, labelled positives are a biased sample, and unlabelled locations cannot be assumed negative. We therefore treat detection as a positive–unlabelled (PU) learning problem <span class="citation" data-cites="bekker2020">(<a href="#ref-bekker2020" role="doc-biblioref">Bekker and Davis 2020</a>)</span>. Hard negatives are sampled explicitly from licensed recyclers in the factory registry, industrial estates, agro-industrial facilities such as rice and sugar mills, construction sites and landfills. Each label records its source, date and confidence, and an active-learning loop directs VHR interpretation towards uncertain candidates.</p>
+<h2 data-number="5.3" id="models"><span class="header-section-number">5.3</span> Models</h2>
+<p>Detection proceeds in two stages. A national screening stage applies pixel-level segmentation—a U-Net-type network <span class="citation" data-cites="ronneberger2015">(<a href="#ref-ronneberger2015" role="doc-biblioref">Ronneberger et al. 2015</a>)</span> and gradient-boosted trees on embedding features—to produce a candidate surface, with a focal loss to address extreme class imbalance <span class="citation" data-cites="lin2017">(<a href="#ref-lin2017" role="doc-biblioref">Lin et al. 2017</a>)</span>. A site-level stage aggregates evidence for each candidate object, including thermal recurrence and night-time activity, and outputs a probability calibrated by isotonic regression <span class="citation" data-cites="niculescu2005">(<a href="#ref-niculescu2005" role="doc-biblioref">Niculescu-Mizil and Caruana 2005</a>)</span>. Model selection and error estimation use spatial block cross-validation to avoid optimistic bias from spatial autocorrelation <span class="citation" data-cites="roberts2017">(<a href="#ref-roberts2017" role="doc-biblioref"><span class="nocase">Roberts et al.</span> 2017</a>)</span>.</p>
+<h2 data-number="5.4" id="accuracy-assessment-and-inventory-estimation"><span class="header-section-number">5.4</span> Accuracy assessment and inventory estimation</h2>
+<p>Accuracy is estimated by design-based inference from a stratified random sample of map units, interpreted on VHR imagery and verified in the field where feasible <span class="citation" data-cites="olofsson2014">(<a href="#ref-olofsson2014" role="doc-biblioref">Olofsson et al. 2014</a>)</span>. Strata are defined by predicted probability and region. We report user’s and producer’s accuracies with confidence intervals and estimate the number and area of sites per province with design-based uncertainty, rather than counting map detections.</p>
+<h2 data-number="5.5" id="registry-gap-analysis"><span class="header-section-number">5.5</span> Registry gap analysis</h2>
+<p>Candidates are matched to registered facilities in factory categories 101, 105 and 106 within a spatial tolerance that accounts for geocoding error. The share of high-probability candidates without a registry match, and its geography, are key outputs. Matching results are published only at aggregated resolution (Section <a href="#sec:ethics">10</a>).</p>
+<h1 data-number="6" id="sec:m2"><span class="header-section-number">6</span> Module 2: dynamics and policy displacement</h1>
+<h2 data-number="6.1" id="emergence-dating-and-activity-indices"><span class="header-section-number">6.1</span> Emergence dating and activity indices</h2>
+<p>For each candidate site, the emergence date <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>t</mi><mi>i</mi></msub><annotation encoding="application/x-tex">t_i</annotation></semantics></math> is estimated from dense time series with continuous change detection <span class="citation" data-cites="zhu2014">(<a href="#ref-zhu2014" role="doc-biblioref">Zhu and Woodcock 2014</a>)</span>, applied to Landsat and Sentinel-2 reflectance and Sentinel-1 backscatter. An annual activity index <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>a</mi><mrow><mi>i</mi><mi>t</mi></mrow></msub><annotation encoding="application/x-tex">a_{it}</annotation></semantics></math> combines thermal recurrence, night-time radiance and roof-area change, standardised within region.</p>
+<figure id="fig:timeline" data-latex-placement="t">
+<img loading="lazy" src="figures/fig4_timeline.png" />
+<figcaption><b>Figure 4.</b> Policy shocks and Earth-observation capability, 2015–2026. The upper track shows international and national events that define the event-study periods of Module 2 (bottom strip); the lower track shows launches of satellites in the portfolio of Figure <a href="#fig:sensors">3</a>. The shaded band marks renewed enforcement campaigns reported in the eastern provinces. Event dates are compiled from public sources and will be verified against primary documents.</figcaption>
+</figure>
+<h2 data-number="6.2" id="identification-strategy"><span class="header-section-number">6.2</span> Identification strategy</h2>
+<p>Outcomes are aggregated to district–year panels: the number of active sites, new emergences and total activity. Because the policy shocks in Figure <a href="#fig:timeline">4</a> are common in time, identification relies on differential exposure defined by predetermined characteristics: travel time to Laem Chabang and other gateways, the pre-2018 presence of licensed recyclers and the pre-period industrial land share. The event-study specification is <span class="eq" id="eq:es"><span class="eq-math"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Y</mi><mrow><mi>d</mi><mi>t</mi></mrow></msub><mo>=</mo><msub><mi>α</mi><mi>d</mi></msub><mo>+</mo><msub><mi>δ</mi><mrow><mi>r</mi><mo stretchy="false" form="prefix">(</mo><mi>d</mi><mo stretchy="false" form="postfix">)</mo><mi>t</mi></mrow></msub><mo>+</mo><munder><mo>∑</mo><mrow><mi>k</mi><mo>≠</mo><mi>−</mi><mn>1</mn></mrow></munder><msub><mi>β</mi><mi>k</mi></msub><mspace width="0.167em"></mspace><msub><mi>E</mi><mi>d</mi></msub><mspace width="0.167em"></mspace><mn>𝟏</mn><mo stretchy="false" form="prefix">[</mo><mi>t</mi><mo>−</mo><mi>T</mi><mo>=</mo><mi>k</mi><mo stretchy="false" form="postfix">]</mo><mo>+</mo><msubsup><mi>𝐱</mi><mrow><mi>d</mi><mi>t</mi></mrow><mi>⊤</mi></msubsup><mi>𝛄</mi><mo>+</mo><msub><mi>ε</mi><mrow><mi>d</mi><mi>t</mi></mrow></msub><mo>,</mo></mrow><annotation encoding="application/x-tex">\begin{equation*}
+Y_{dt}=\alpha_d+\delta_{r(d)t}+\sum_{k\neq-1}\beta_k\,E_d\,\mathbf{1}[t-T=k]+\mathbf{x}_{dt}^{\top}\bm{\gamma}+\varepsilon_{dt},
+\end{equation*}</annotation></semantics></math></span><span class="eqno">(1)</span></span> where <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>Y</mi><mrow><mi>d</mi><mi>t</mi></mrow></msub><annotation encoding="application/x-tex">Y_{dt}</annotation></semantics></math> is the outcome in district <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>d</mi><annotation encoding="application/x-tex">d</annotation></semantics></math> and year <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>α</mi><mi>d</mi></msub><annotation encoding="application/x-tex">\alpha_d</annotation></semantics></math> are district fixed effects, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>δ</mi><mrow><mi>r</mi><mo stretchy="false" form="prefix">(</mo><mi>d</mi><mo stretchy="false" form="postfix">)</mo><mi>t</mi></mrow></msub><annotation encoding="application/x-tex">\delta_{r(d)t}</annotation></semantics></math> are region-by-year effects, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>E</mi><mi>d</mi></msub><annotation encoding="application/x-tex">E_d</annotation></semantics></math> is exposure, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>T</mi><annotation encoding="application/x-tex">T</annotation></semantics></math> is the shock year and <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>β</mi><mi>k</mi></msub><annotation encoding="application/x-tex">\beta_k</annotation></semantics></math> trace dynamic effects relative to the year before the shock. Pre-period coefficients (<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>&lt;</mo><mi>−</mi><mn>1</mn></mrow><annotation encoding="application/x-tex">k&lt;-1</annotation></semantics></math>) test for differential pre-trends. Where treatment is staggered, as with district-level enforcement episodes, we use estimators that are robust to heterogeneous effects <span class="citation" data-cites="callaway2021 sun2021">(<a href="#ref-callaway2021" role="doc-biblioref">Callaway and Sant’Anna 2021</a>; <a href="#ref-sun2021" role="doc-biblioref">Sun and Abraham 2021</a>)</span> and avoid two-way fixed-effects comparisons that use already-treated units as controls <span class="citation" data-cites="goodmanbacon2021">(<a href="#ref-goodmanbacon2021" role="doc-biblioref">Goodman-Bacon 2021</a>)</span>.</p>
+<h2 data-number="6.3" id="displacement"><span class="header-section-number">6.3</span> Displacement</h2>
+<p>Enforcement in one district may push activity into neighbouring districts, which violates the assumption of no interference between units. Rather than treating this as a nuisance, we estimate spillovers explicitly with rings of neighbouring districts around enforced districts, following designs used for pollution spillovers across jurisdictions <span class="citation" data-cites="lipscomb2017">(<a href="#ref-lipscomb2017" role="doc-biblioref">Lipscomb and Mobarak 2017</a>)</span>. Net effects are reported as the sum of direct and spillover estimates.</p>
+<h2 data-number="6.4" id="trade-linkage"><span class="header-section-number">6.4</span> Trade linkage</h2>
+<p>Annual imports and exports of e-waste and related scrap are compiled from UN Comtrade, using mirror statistics and HS heading 8549 from 2022 onwards with predecessor codes before then, to test whether changes at import-dependent sites track trade flows.</p>
+<h1 data-number="7" id="sec:m3"><span class="header-section-number">7</span> Module 3: river source attribution in the Bang Pakong basin</h1>
+<h2 data-number="7.1" id="hydrological-network"><span class="header-section-number">7.1</span> Hydrological network</h2>
+<p>Flow routing is derived from MERIT Hydro <span class="citation" data-cites="yamazaki2019">(<a href="#ref-yamazaki2019" role="doc-biblioref">Yamazaki et al. 2019</a>)</span> and FABDEM <span class="citation" data-cites="hawker2022">(<a href="#ref-hawker2022" role="doc-biblioref">Hawker et al. 2022</a>)</span> and cross-checked against HydroRIVERS <span class="citation" data-cites="lehner2013">(<a href="#ref-lehner2013" role="doc-biblioref">Lehner and Grill 2013</a>)</span>. Because DEM-based routing misrepresents canals and pumping in flat floodplains, the network is corrected with irrigation-canal data and field reconnaissance. Each candidate site is linked to its receiving reach, and along-network distances to downstream monitoring points are computed. Sentinel-1 flood maps <span class="citation" data-cites="twele2016">(<a href="#ref-twele2016" role="doc-biblioref">Twele et al. 2016</a>)</span> identify events that connect otherwise isolated sites to the channel network, and SWOT observations <span class="citation" data-cites="biancamaria2016">(<a href="#ref-biancamaria2016" role="doc-biblioref">Biancamaria et al. 2016</a>)</span> provide water-surface elevation context for the lower reach.</p>
+<h2 data-number="7.2" id="sampling-design"><span class="header-section-number">7.2</span> Sampling design</h2>
+<p>Sampling follows a paired upstream–downstream design around candidate sites, with reference stations in tributaries without candidates (Figure <a href="#fig:attribution">5</a>a). Paired upstream–downstream comparisons are an established design for isolating point-source effects in rivers <span class="citation" data-cites="keiser2019">(<a href="#ref-keiser2019" role="doc-biblioref">Keiser and Shapiro 2019</a>)</span>. Surface water (dissolved and particulate fractions), suspended sediment and bed sediment are collected in the dry season, the wet season and after flood pulses. Sediment cores are taken from depositional settings with undisturbed accumulation, such as floodplain ponds and oxbows, rather than from the tidal channel, where resuspension blurs chronologies. Salinity is measured with every sample.</p>
+<figure id="fig:attribution" data-latex-placement="t">
+<img loading="lazy" src="figures/fig5_attribution_schematic.png" />
+<figcaption><b>Figure 5.</b> Schematic of the Module 3 attribution design (illustrative; not data). (a) Paired upstream (U) and downstream (D) stations around candidate sites (S), a reference station (R) in a tributary without candidates, a sediment core (C) in a floodplain pond, a flood-connected area and the tidal limit. (b) Lead-isotope mixing space with geogenic, legacy-gasoline and e-waste end members; downstream samples shift towards the e-waste end member. (c) Expected core chronology, in which marker enrichment begins after the satellite-derived emergence date <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>t</mi><mi>i</mi></msub><annotation encoding="application/x-tex">t_i</annotation></semantics></math> of upstream candidates.</figcaption>
+</figure>
+<h2 data-number="7.3" id="analytes-and-marker-suite"><span class="header-section-number">7.3</span> Analytes and marker suite</h2>
+<p>The marker suite (Table <a href="#tab:markers">3</a>) combines metals that are abundant in e-waste with organic compounds that are specific to it. Because each metal also has non-e-waste sources, attribution relies on ratios and combinations—for example, covarying Pb and Sn from solder together with polybrominated diphenyl ethers (PBDEs) from flame-retarded plastics—rather than on single elements.</p>
+<div id="tab:markers">
+<div class="tbl"><p class="tcap"><b>Table 3.</b> Geochemical marker suite for Module 3. Attribution relies on combinations and ratios of markers because each metal also has non-e-waste sources.</p><div class="tscroll"><table>
+<thead>
+<tr>
+<th style="text-align: left;">Marker</th>
+<th style="text-align: left;">Principal e-waste source</th>
+<th style="text-align: left;">Method</th>
+<th style="text-align: left;">Diagnostic value and caveats</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Cu</td>
+<td style="text-align: left;">Wiring, printed circuit boards</td>
+<td style="text-align: left;">ICP-MS</td>
+<td style="text-align: left;">High loading; also agricultural and industrial sources</td>
+</tr>
+<tr>
+<td style="text-align: left;">Pb, Sn</td>
+<td style="text-align: left;">Solder; Pb also in cathode-ray-tube glass</td>
+<td style="text-align: left;">ICP-MS</td>
+<td style="text-align: left;">Pb–Sn covariation indicates solder; Pb also from legacy gasoline</td>
+</tr>
+<tr>
+<td style="text-align: left;">Sb</td>
+<td style="text-align: left;">Sb<sub>2</sub>O<sub>3</sub> synergist in flame-retarded plastics</td>
+<td style="text-align: left;">ICP-MS</td>
+<td style="text-align: left;">Tracer of the plastic fraction; also from brake wear</td>
+</tr>
+<tr>
+<td style="text-align: left;">Zn, Ni, Cd</td>
+<td style="text-align: left;">Galvanised parts, batteries</td>
+<td style="text-align: left;">ICP-MS</td>
+<td style="text-align: left;">Supporting markers; Cd partitioning is salinity-sensitive</td>
+</tr>
+<tr>
+<td style="text-align: left;">PBDEs</td>
+<td style="text-align: left;">Flame retardants in casings and boards</td>
+<td style="text-align: left;">GC–MS</td>
+<td style="text-align: left;">Highly specific; hydrophobic and particle-bound</td>
+</tr>
+<tr>
+<td style="text-align: left;">PCDD/Fs, PBDD/Fs</td>
+<td style="text-align: left;">By-products of open burning</td>
+<td style="text-align: left;">HRGC–HRMS</td>
+<td style="text-align: left;">Burning-specific; analysed on a targeted subset</td>
+</tr>
+<tr>
+<td style="text-align: left;"><sup>206</sup>Pb/<sup>207</sup>Pb, <sup>208</sup>Pb/<sup>206</sup>Pb</td>
+<td style="text-align: left;">Source-specific isotopic signatures</td>
+<td style="text-align: left;">MC-ICP-MS</td>
+<td style="text-align: left;">End-member discrimination in mixing models (Equation <a href="#eq:mix">4</a>)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><sup>210</sup>Pb, <sup>137</sup>Cs</td>
+<td style="text-align: left;">–</td>
+<td style="text-align: left;">Gamma spectrometry</td>
+<td style="text-align: left;">Sediment-core chronology</td>
+</tr>
+</tbody>
+</table></div></div>
+</div>
+<h2 data-number="7.4" id="statistical-attribution"><span class="header-section-number">7.4</span> Statistical attribution</h2>
+<p>For monitoring point <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math>, an upstream e-waste loading index is defined as <span class="eq" id="eq:load"><span class="eq-math"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>L</mi><mi>j</mi></msub><mo>=</mo><munder><mo>∑</mo><mrow><mi>i</mi><mo>∈</mo><mi>𝒰</mi><mo stretchy="false" form="prefix">(</mo><mi>j</mi><mo stretchy="false" form="postfix">)</mo></mrow></munder><msub><mi>p</mi><mi>i</mi></msub><mspace width="0.167em"></mspace><msub><mi>a</mi><mi>i</mi></msub><mspace width="0.167em"></mspace><mrow><mi mathvariant="normal">exp</mi><mo>&#8289;</mo></mrow><mspace width="-0.167em"></mspace><mrow><mo stretchy="true" form="prefix">(</mo><mi>−</mi><mfrac><msub><mi>d</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub><mi>λ</mi></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo></mrow><annotation encoding="application/x-tex">\begin{equation*}
+L_j=\sum_{i\in\mathcal{U}(j)}p_i\,a_i\,\exp\!\left(-\frac{d_{ij}}{\lambda}\right),
+\end{equation*}</annotation></semantics></math></span><span class="eqno">(2)</span></span> where <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝒰</mi><mo stretchy="false" form="prefix">(</mo><mi>j</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\mathcal{U}(j)</annotation></semantics></math> is the set of candidate sites hydrologically upstream of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math>, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>d</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub><annotation encoding="application/x-tex">d_{ij}</annotation></semantics></math> is the along-network distance and <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>λ</mi><annotation encoding="application/x-tex">\lambda</annotation></semantics></math> is a decay length estimated from the data. Concentrations or marker ratios <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>y</mi><mi>j</mi></msub><annotation encoding="application/x-tex">y_j</annotation></semantics></math> are modelled with an SSN model, <span class="eq" id="eq:ssn"><span class="eq-math"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>y</mi><mi>j</mi></msub><mo>=</mo><msubsup><mi>𝐱</mi><mi>j</mi><mi>⊤</mi></msubsup><mi>𝛃</mi><mo>+</mo><mi>θ</mi><msub><mi>L</mi><mi>j</mi></msub><mo>+</mo><msub><mi>z</mi><mrow><mi mathvariant="normal">T</mi><mi mathvariant="normal">U</mi></mrow></msub><mo stretchy="false" form="prefix">(</mo><mi>j</mi><mo stretchy="false" form="postfix">)</mo><mo>+</mo><msub><mi>z</mi><mrow><mi mathvariant="normal">T</mi><mi mathvariant="normal">D</mi></mrow></msub><mo stretchy="false" form="prefix">(</mo><mi>j</mi><mo stretchy="false" form="postfix">)</mo><mo>+</mo><msub><mi>ε</mi><mi>j</mi></msub><mo>,</mo></mrow><annotation encoding="application/x-tex">\begin{equation*}
+y_j=\mathbf{x}_j^{\top}\bm{\beta}+\theta L_j+z_{\mathrm{TU}}(j)+z_{\mathrm{TD}}(j)+\varepsilon_j,
+\end{equation*}</annotation></semantics></math></span><span class="eqno">(3)</span></span> where <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐱</mi><mi>j</mi></msub><annotation encoding="application/x-tex">\mathbf{x}_j</annotation></semantics></math> are covariates (land use, licensed facilities and wastewater treatment), <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>z</mi><mrow><mi mathvariant="normal">T</mi><mi mathvariant="normal">U</mi></mrow></msub><annotation encoding="application/x-tex">z_{\mathrm{TU}}</annotation></semantics></math> and <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>z</mi><mrow><mi mathvariant="normal">T</mi><mi mathvariant="normal">D</mi></mrow></msub><annotation encoding="application/x-tex">z_{\mathrm{TD}}</annotation></semantics></math> are tail-up and tail-down spatial random effects <span class="citation" data-cites="verhoef2010">(<a href="#ref-verhoef2010" role="doc-biblioref">Ver Hoef and Peterson 2010</a>)</span>, and <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>θ</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\theta&gt;0</annotation></semantics></math> indicates an e-waste signal beyond other sources. Uncertainty in <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>p</mi><mi>i</mi></msub><annotation encoding="application/x-tex">p_i</annotation></semantics></math>, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>a</mi><mi>i</mi></msub><annotation encoding="application/x-tex">a_i</annotation></semantics></math> and <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>λ</mi><annotation encoding="application/x-tex">\lambda</annotation></semantics></math> is propagated by Monte Carlo sampling. Source proportions at each station are estimated with Bayesian mixing models of Pb isotope ratios and marker ratios <span class="citation" data-cites="stock2018">(<a href="#ref-stock2018" role="doc-biblioref">Stock et al. 2018</a>)</span>, <span class="eq" id="eq:mix"><span class="eq-math"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>𝛅</mi><mi>j</mi></msub><mo>=</mo><munder><mo>∑</mo><mi>s</mi></munder><msub><mi>f</mi><mrow><mi>j</mi><mi>s</mi></mrow></msub><mspace width="0.167em"></mspace><msub><mi>𝛍</mi><mi>s</mi></msub><mo>+</mo><msub><mi>𝛜</mi><mi>j</mi></msub><mo>,</mo><mspace width="2.0em"></mspace><munder><mo>∑</mo><mi>s</mi></munder><msub><mi>f</mi><mrow><mi>j</mi><mi>s</mi></mrow></msub><mo>=</mo><mn>1</mn><mo>,</mo><mspace width="1.0em"></mspace><msub><mi>f</mi><mrow><mi>j</mi><mi>s</mi></mrow></msub><mo>≥</mo><mn>0</mn><mo>,</mo></mrow><annotation encoding="application/x-tex">\begin{equation*}
+\bm{\delta}_j=\sum_{s}f_{js}\,\bm{\mu}_s+\bm{\epsilon}_j,\qquad\sum_s f_{js}=1,\quad f_{js}\ge 0,
+\end{equation*}</annotation></semantics></math></span><span class="eqno">(4)</span></span> with end members <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝛍</mi><mi>s</mi></msub><annotation encoding="application/x-tex">\bm{\mu}_s</annotation></semantics></math> for geogenic background, legacy gasoline lead and e-waste materials characterised from local samples (Figure <a href="#fig:attribution">5</a>b). PMF <span class="citation" data-cites="paatero1994 norris2014">(<a href="#ref-paatero1994" role="doc-biblioref">Paatero and Tapper 1994</a>; <a href="#ref-norris2014" role="doc-biblioref">Norris et al. 2014</a>)</span> provides an independent, data-driven decomposition.</p>
+<h2 data-number="7.5" id="chronology"><span class="header-section-number">7.5</span> Chronology</h2>
+<p>Core chronologies use the constant-rate-of-supply model for <sup>210</sup>Pb <span class="citation" data-cites="appleby1978">(<a href="#ref-appleby1978" role="doc-biblioref">Appleby and Oldfield 1978</a>)</span>, validated with <sup>137</sup>Cs. The onset of marker enrichment is compared with the satellite-derived emergence dates of upstream candidates (Figure <a href="#fig:attribution">5</a>c). Agreement within dating uncertainty supports attribution, whereas enrichment that predates all upstream emergences points to other or legacy sources. Because leaded gasoline was phased out in Thailand in the mid-1990s, legacy lead must be separated isotopically from recent inputs.</p>
+<h2 data-number="7.6" id="the-tidal-reach"><span class="header-section-number">7.6</span> The tidal reach</h2>
+<p>Bidirectional flow in the tidal reach violates the directional assumptions of tail-up models. The tidal reach is therefore analysed separately, using salinity-normalised concentrations and, where needed, hydrodynamic modelling, and the SSN model is restricted to non-tidal reaches. Salinity-dependent partitioning <span class="citation" data-cites="dulaing2009">(<a href="#ref-dulaing2009" role="doc-biblioref">Du Laing et al. 2009</a>)</span> is modelled explicitly rather than ignored.</p>
+<h1 data-number="8" id="sec:synthesis"><span class="header-section-number">8</span> Evidence synthesis</h1>
+<p>For each candidate site <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math> and receiving reach, four criteria are evaluated:</p>
+<dl>
+<dt>C1 Detection:</dt>
+<dd>
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mi>i</mi></msub><mo>≥</mo><mi>τ</mi></mrow><annotation encoding="application/x-tex">p_i\ge\tau</annotation></semantics></math>, with the threshold <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>τ</mi><annotation encoding="application/x-tex">\tau</annotation></semantics></math> chosen from the design-based accuracy assessment;</p>
+</dd>
+<dt>C2 Connectivity:</dt>
+<dd>
+<p>a hydrological path links the site to the reach under base-flow or documented flood conditions;</p>
+</dd>
+<dt>C3 Geochemical consistency:</dt>
+<dd>
+<p>downstream samples shift towards the e-waste end member relative to paired upstream samples;</p>
+</dd>
+<dt>C4 Chronology:</dt>
+<dd>
+<p>the onset of marker enrichment in dated sediments follows <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>t</mi><mi>i</mi></msub><annotation encoding="application/x-tex">t_i</annotation></semantics></math> within dating uncertainty.</p>
+</dd>
+</dl>
+<p>A site is reported as an <em>attributed</em> source when all four criteria hold and as a <em>probable</em> source when detection, connectivity and geochemistry hold (C1–C3); a site meeting any two criteria is a <em>possible</em> source, and otherwise it remains a candidate. This rule replaces an earlier count-based rule, under which any three criteria sufficed for the probable level, because the simulations in Section <a href="#sec:validation">9</a> showed that rule to be too permissive. Table <a href="#tab:hypotheses">4</a> lists the hypotheses tested in each module and the evidence used.</p>
+<div id="tab:hypotheses">
+<div class="tbl"><p class="tcap"><b>Table 4.</b> Pre-specified hypotheses and the evidence used to test them.</p><div class="tscroll"><table>
+<thead>
+<tr>
+<th style="text-align: left;">ID</th>
+<th style="text-align: left;">Hypothesis</th>
+<th style="text-align: left;">Test and evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">H1a</td>
+<td style="text-align: left;">Multi-sensor fusion outperforms the best single-sensor model</td>
+<td style="text-align: left;">Precision–recall AUC and F1 under spatial block cross-validation</td>
+</tr>
+<tr>
+<td style="text-align: left;">H1b</td>
+<td style="text-align: left;">A non-trivial share of high-probability candidates lacks a registry match</td>
+<td style="text-align: left;">Design-based estimate of the unmatched share, by region</td>
+</tr>
+<tr>
+<td style="text-align: left;">H2a</td>
+<td style="text-align: left;">Site emergence increased in high-exposure districts after 2018</td>
+<td style="text-align: left;">Event-study coefficients <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>β</mi><mi>k</mi></msub><annotation encoding="application/x-tex">\beta_k</annotation></semantics></math>, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">k\ge0</annotation></semantics></math> (Equation <a href="#eq:es">1</a>)</td>
+</tr>
+<tr>
+<td style="text-align: left;">H2b</td>
+<td style="text-align: left;">Enforcement displaced activity to neighbouring districts</td>
+<td style="text-align: left;">Spillover-ring estimates; direct versus net effects</td>
+</tr>
+<tr>
+<td style="text-align: left;">H2c</td>
+<td style="text-align: left;">The 2025 Basel amendments reduced import-dependent but not household-scale activity</td>
+<td style="text-align: left;">Heterogeneous post-2025 effects by site type</td>
+</tr>
+<tr>
+<td style="text-align: left;">H3a</td>
+<td style="text-align: left;">Upstream e-waste loading raises downstream marker levels</td>
+<td style="text-align: left;">SSN coefficient <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>θ</mi><annotation encoding="application/x-tex">\theta</annotation></semantics></math> with propagated uncertainty (Equation <a href="#eq:ssn">3</a>)</td>
+</tr>
+<tr>
+<td style="text-align: left;">H3b</td>
+<td style="text-align: left;">The e-waste fraction increases downstream of candidates</td>
+<td style="text-align: left;">Posterior source proportions at paired stations (Equation <a href="#eq:mix">4</a>)</td>
+</tr>
+<tr>
+<td style="text-align: left;">H3c</td>
+<td style="text-align: left;">Marker onset follows satellite-derived emergence</td>
+<td style="text-align: left;"><sup>210</sup>Pb chronology compared with <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>t</mi><mi>i</mi></msub><annotation encoding="application/x-tex">t_i</annotation></semantics></math></td>
+</tr>
+</tbody>
+</table></div></div>
+</div>
+<h1 data-number="9" id="sec:validation"><span class="header-section-number">9</span> Implementation and simulation-based validation</h1>
+<h2 data-number="9.1" id="software"><span class="header-section-number">9.1</span> Software</h2>
+<p>The framework is implemented in two open programs (see Data and code availability). A Google Earth Engine script screens candidate sites with the four proxies of Table <a href="#tab:obsmodel">2</a> and exports, for each site, a heuristic screening score, an activity index and an emergence date, together with a wet-season flood-frequency layer from Sentinel-1. A Python program then performs the registry gap analysis, known-site exclusion and hard-negative filtering; snaps sites and stations to a vector river network (HydroRIVERS or MERIT-Basins); computes along-network distances, the loading index of Equation <a href="#eq:load">2</a> and marker anomalies; selects <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>λ</mi><annotation encoding="application/x-tex">\lambda</annotation></semantics></math> by rank association with a permutation test; and evaluates criteria C1–C4. The screening script has been checked statically and executed against a mock of the Earth Engine API that covers every configuration branch, but it has not yet been run on real imagery. The Python program was tested end to end on synthetic inputs and on the real network described next.</p>
+<h2 data-number="9.2" id="network-checks-on-the-bang-pakong-river-system"><span class="header-section-number">9.2</span> Network checks on the Bang Pakong river system</h2>
+<p>We applied the network module to the Bang Pakong system in HydroRIVERS v1.0 <span class="citation" data-cites="lehner2013">(<a href="#ref-lehner2013" role="doc-biblioref">Lehner and Grill 2013</a>)</span>: 240 reaches with a mean discharge of at least 12 m<sup>3</sup> s<sup><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mn>1</mn></mrow><annotation encoding="application/x-tex">-1</annotation></semantics></math></sup>, 658 km of channel and a maximum along-network distance of 280 km to the outlet (Figure <a href="#fig:network">6</a>a). The flow orientation inferred from network topology agreed with the digitising direction of the source data for all 240 reaches. For 500 random pairs of points, along-network distances computed by the pipeline agreed with distances measured along independently merged path lines to within <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>10</mn><mrow><mi>−</mi><mn>9</mn></mrow></msup><annotation encoding="application/x-tex">10^{-9}</annotation></semantics></math> m (Figure <a href="#fig:network">6</a>b). The public extract used here is geometrically simplified, so its reach lengths are a median 5.6% shorter than the HydroRIVERS attribute lengths (5th–95th percentile: 10.9% shorter to 1.0% longer); applications should use full-resolution reaches.</p>
+<figure id="fig:network" data-latex-placement="t">
+<img loading="lazy" src="figures/fig7_network_check.png" />
+<figcaption><b>Figure 6.</b> Network checks on the real Bang Pakong river system (HydroRIVERS v1.0; reaches with a mean discharge of at least 12 m<sup>3</sup> s<sup><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mn>1</mn></mrow><annotation encoding="application/x-tex">-1</annotation></semantics></math></sup>). (a) Along-network distance from each reach midpoint to the outlet, computed by the pipeline; line width scales with discharge. (b) Pipeline distances against distances measured along independently merged path lines for 500 random point pairs; the dashed line is 1:1.</figcaption>
+</figure>
+<h2 data-number="9.3" id="simulation-design"><span class="header-section-number">9.3</span> Simulation design</h2>
+<p>To test the statistical components, we generated synthetic worlds on the real network topology; synthetic site locations are not reported. Each replicate placed 60 candidate sites at random positions, 70% within 700 m of a channel and 30% between 700 and 2<span>,</span>500 m away. Each site was a true e-waste source with probability <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>π</mi><mo>=</mo><mn>0.25</mn></mrow><annotation encoding="application/x-tex">\pi=0.25</annotation></semantics></math> (<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>π</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\pi=0</annotation></semantics></math> in a null scenario), and sources were hydrologically connected when within 600 m of a channel or, farther away, with probability 0.3 through flooding. Screening scores were drawn from Beta(5, 2) for sources and Beta(2, 4) for non-sources to mimic imperfect satellite discrimination. Twenty-five stations were placed on the network, and marker concentrations followed <span class="eq" id="eq:sim"><span class="eq-math"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mrow><mi>j</mi><mi>m</mi></mrow></msub><mo>=</mo><msub><mi>B</mi><mi>m</mi></msub><mspace width="0.167em"></mspace><msup><mi>e</mi><msub><mi>ε</mi><mrow><mi>j</mi><mi>m</mi></mrow></msub></msup><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>+</mo><msub><mi>κ</mi><mi>m</mi></msub><msub><mi>T</mi><mi>j</mi></msub><mo>+</mo><msub><mi>γ</mi><mi>m</mi></msub><msub><mi>K</mi><mi>j</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>ε</mi><mrow><mi>j</mi><mi>m</mi></mrow></msub><mo>∼</mo><mi>𝒩</mi><mo stretchy="false" form="prefix">(</mo><mn>0</mn><mo>,</mo><mspace width="0.167em"></mspace><msup><mn>0.25</mn><mn>2</mn></msup><mo stretchy="false" form="postfix">)</mo><mo>,</mo></mrow><annotation encoding="application/x-tex">\begin{equation*}
+C_{jm}=B_m\,e^{\varepsilon_{jm}}\left(1+\kappa_m T_j+\gamma_m K_j\right),\qquad \varepsilon_{jm}\sim\mathcal{N}(0,\,0.25^2),
+\end{equation*}</annotation></semantics></math></span><span class="eqno">(5)</span></span> where <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>T</mi><mi>j</mi></msub><mo>=</mo><msub><mo>∑</mo><mi>i</mi></msub><msub><mi>A</mi><mi>i</mi></msub><mrow><mi mathvariant="normal">exp</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>−</mi><msub><mi>d</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub><mi>/</mi><msub><mi>λ</mi><mrow><mi mathvariant="normal">t</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">u</mi><mi mathvariant="normal">e</mi></mrow></msub><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">T_j=\sum_i A_i\exp(-d_{ij}/\lambda_{\mathrm{true}})</annotation></semantics></math> sums over connected sources, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>K</mi><mi>j</mi></msub><annotation encoding="application/x-tex">K_j</annotation></semantics></math> is the corresponding load from three non-e-waste industrial confounders, and the sensitivities <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>κ</mi><mi>m</mi></msub><annotation encoding="application/x-tex">\kappa_m</annotation></semantics></math> and <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>γ</mi><mi>m</mi></msub><annotation encoding="application/x-tex">\gamma_m</annotation></semantics></math> make the confounders raise Cu, Cd, Ni and Zn but not Sn or Sb. Two samples were drawn per station, and reference stations were chosen among stations without upstream loads. Dated cores were simulated at stations with <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>T</mi><mi>j</mi></msub><mo>≥</mo><mn>0.2</mn></mrow><annotation encoding="application/x-tex">T_j\geq0.2</annotation></semantics></math>, with onsets following the emergence of the dominant source by <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0.5</mn><mo>±</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">0.5\pm1</annotation></semantics></math> years, and at up to three confounder-only stations with legacy onsets between 2005 and 2016. Licensed factories, decoy factories just beyond 500 m, other-category factories, previously reported sites and hard negatives were placed at known distances. Three scenarios (<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>λ</mi><mrow><mi mathvariant="normal">t</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">u</mi><mi mathvariant="normal">e</mi></mrow></msub><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">\lambda_{\mathrm{true}}=3</annotation></semantics></math>, 8 and 20 km) and the null scenario were each replicated 150 times, with 99 permutations per association test.</p>
+<h2 data-number="9.4" id="results"><span class="header-section-number">9.4</span> Results</h2>
+<p>Registry, known-site and hard-negative flags matched the geometric truth for every site in all 600 replicates (0 mismatches). This required replacing polygonal buffers, which slightly under-cover a circle, by exact distance tests: an earlier version misclassified a point lying just inside the 300 m hard-negative radius, and a dedicated test with <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mo>×</mo><msup><mn>10</mn><mn>5</mn></msup></mrow><annotation encoding="application/x-tex">2\times10^5</annotation></semantics></math> points concentrated at the boundary found no remaining mismatches.</p>
+<p>The selected <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>λ</mi><annotation encoding="application/x-tex">\lambda</annotation></semantics></math> was within a factor of 2.5 of the true value in 43%, 79% and 97% of replicates for <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>λ</mi><mrow><mi mathvariant="normal">t</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">u</mi><mi mathvariant="normal">e</mi></mrow></msub><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">\lambda_{\mathrm{true}}=3</annotation></semantics></math>, 8 and 20 km, with a tendency to select values above the truth (Figure <a href="#fig:simulation">7</a>a). The association test detected the e-waste signal at <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>&lt;</mo><mn>0.05</mn></mrow><annotation encoding="application/x-tex">p&lt;0.05</annotation></semantics></math> in 48%, 89% and 98% of replicates (Figure <a href="#fig:simulation">7</a>b). Under the null scenario it rejected in 7.3% of replicates (95% interval 4.1–12.7%), slightly above the nominal 5%, which is consistent with spatially structured contamination weakening the exchangeability that the permutation test assumes.</p>
+<p>For attribution (Figure <a href="#fig:simulation">7</a>c and Table <a href="#tab:validation">5</a>), the original count-based rule was too permissive: sites meeting any three criteria were true sources with a precision of only 0.54–0.65. Requiring geochemical evidence together with detection and connectivity (C1–C3) raised precision to 0.84–0.90, and the attributed level (C1–C4) reached 0.85–0.95, at the cost of recall (0.27–0.36 and 0.18–0.35 of attributable sources). Criterion C3 was met by 0.20–0.54 of true sources with a downstream station but by only 0.01–0.10 of non-sources exposed solely to non-e-waste confounders, which confirms the value of e-waste-specific markers (Figure <a href="#fig:simulation">7</a>d). Among all non-sources, however, C3 was met by 0.08–0.25 of sites, rising with <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>λ</mi><annotation encoding="application/x-tex">\lambda</annotation></semantics></math>, because a site lying between a clean upstream station and a contaminated downstream station inherits the signal of any source between them.</p>
+<figure id="fig:simulation" data-latex-placement="t">
+<img loading="lazy" src="figures/fig8_simulation.png" />
+<figcaption><b>Figure 7.</b> Simulation-based validation with synthetic sites and stations on the real Bang Pakong network (150 replicates per scenario). (a) Selected decay length <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>λ</mi><annotation encoding="application/x-tex">\lambda</annotation></semantics></math>; triangles mark the grid value closest to each true value. (b) Cumulative distribution of permutation p-values; the dashed line is the null scenario and the dotted line marks <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>=</mo><mn>0.05</mn></mrow><annotation encoding="application/x-tex">p=0.05</annotation></semantics></math>. (c) Precision (filled circles) and recall of attributable sources (open squares) at four evidence thresholds, with 95% Wilson intervals <span class="citation" data-cites="wilson1927">(<a href="#ref-wilson1927" role="doc-biblioref">Wilson 1927</a>)</span>. (d) Share of sites meeting criterion C3 among true sources, all non-sources and non-sources exposed only to non-e-waste confounders.</figcaption>
+</figure>
+<div id="tab:validation">
+<div class="tbl"><p class="tcap"><b>Table 5.</b> Simulation-based validation on the real Bang Pakong network topology with synthetic sites and stations (150 replicates per scenario; 95% Wilson intervals <span class="citation" data-cites="wilson1927">(<a href="#ref-wilson1927" role="doc-biblioref">Wilson 1927</a>)</span> in brackets). Precision and recall refer to unregistered candidate sites; recall is the share of attributable sources (true, hydrologically connected sources with a station within <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><msub><mi>λ</mi><mrow><mi mathvariant="normal">t</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">u</mi><mi mathvariant="normal">e</mi></mrow></msub></mrow><annotation encoding="application/x-tex">3\lambda_{\mathrm{true}}</annotation></semantics></math> downstream) that reach the level. Under the null scenario the association test rejected in 7.3% of replicates (95% interval 4.1–12.7%).</p><div class="tscroll"><table>
+<thead>
+<tr>
+<th style="text-align: left;">Metric</th>
+<th style="text-align: left;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>λ</mi><mrow><mi mathvariant="normal">t</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">u</mi><mi mathvariant="normal">e</mi></mrow></msub><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">\lambda_{\mathrm{true}}=3</annotation></semantics></math> km</th>
+<th style="text-align: left;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>λ</mi><mrow><mi mathvariant="normal">t</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">u</mi><mi mathvariant="normal">e</mi></mrow></msub><mo>=</mo><mn>8</mn></mrow><annotation encoding="application/x-tex">\lambda_{\mathrm{true}}=8</annotation></semantics></math> km</th>
+<th style="text-align: left;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>λ</mi><mrow><mi mathvariant="normal">t</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">u</mi><mi mathvariant="normal">e</mi></mrow></msub><mo>=</mo><mn>20</mn></mrow><annotation encoding="application/x-tex">\lambda_{\mathrm{true}}=20</annotation></semantics></math> km</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Selected <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>λ</mi><annotation encoding="application/x-tex">\lambda</annotation></semantics></math> within a factor of 2.5 of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>λ</mi><mrow><mi mathvariant="normal">t</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">u</mi><mi mathvariant="normal">e</mi></mrow></msub><annotation encoding="application/x-tex">\lambda_{\mathrm{true}}</annotation></semantics></math></td>
+<td style="text-align: left;">43%</td>
+<td style="text-align: left;">79%</td>
+<td style="text-align: left;">97%</td>
+</tr>
+<tr>
+<td style="text-align: left;">Power of the association test (<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>&lt;</mo><mn>0.05</mn></mrow><annotation encoding="application/x-tex">p&lt;0.05</annotation></semantics></math>)</td>
+<td style="text-align: left;">48%</td>
+<td style="text-align: left;">89%</td>
+<td style="text-align: left;">98%</td>
+</tr>
+<tr>
+<td style="text-align: left;">Precision, possible (<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>≥</mo><annotation encoding="application/x-tex">\geq</annotation></semantics></math>2 criteria)</td>
+<td style="text-align: left;">0.61 [0.58–0.63]</td>
+<td style="text-align: left;">0.51 [0.49–0.53]</td>
+<td style="text-align: left;">0.38 [0.36–0.40]</td>
+</tr>
+<tr>
+<td style="text-align: left;">Precision, probable, count rule (<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>≥</mo><annotation encoding="application/x-tex">\geq</annotation></semantics></math>3 criteria)</td>
+<td style="text-align: left;">0.65 [0.60–0.70]</td>
+<td style="text-align: left;">0.65 [0.62–0.68]</td>
+<td style="text-align: left;">0.54 [0.51–0.56]</td>
+</tr>
+<tr>
+<td style="text-align: left;">Precision, probable, strict rule (C1–C3)</td>
+<td style="text-align: left;">0.85 [0.78–0.90]</td>
+<td style="text-align: left;">0.90 [0.86–0.93]</td>
+<td style="text-align: left;">0.84 [0.80–0.88]</td>
+</tr>
+<tr>
+<td style="text-align: left;">Precision, attributed (C1–C4)</td>
+<td style="text-align: left;">0.85 [0.76–0.91]</td>
+<td style="text-align: left;">0.95 [0.91–0.97]</td>
+<td style="text-align: left;">0.87 [0.83–0.90]</td>
+</tr>
+<tr>
+<td style="text-align: left;">Recall, probable, strict rule</td>
+<td style="text-align: left;">0.27 [0.23–0.32]</td>
+<td style="text-align: left;">0.33 [0.29–0.36]</td>
+<td style="text-align: left;">0.36 [0.33–0.39]</td>
+</tr>
+<tr>
+<td style="text-align: left;">Recall, attributed</td>
+<td style="text-align: left;">0.18 [0.14–0.22]</td>
+<td style="text-align: left;">0.27 [0.23–0.30]</td>
+<td style="text-align: left;">0.35 [0.32–0.38]</td>
+</tr>
+<tr>
+<td style="text-align: left;">C3 met, true sources</td>
+<td style="text-align: left;">0.20 [0.18–0.23]</td>
+<td style="text-align: left;">0.40 [0.37–0.43]</td>
+<td style="text-align: left;">0.54 [0.51–0.57]</td>
+</tr>
+<tr>
+<td style="text-align: left;">C3 met, non-sources</td>
+<td style="text-align: left;">0.08 [0.07–0.09]</td>
+<td style="text-align: left;">0.15 [0.14–0.17]</td>
+<td style="text-align: left;">0.25 [0.23–0.26]</td>
+</tr>
+<tr>
+<td style="text-align: left;">C3 met, non-sources exposed only to confounders</td>
+<td style="text-align: left;">0.10 [0.05–0.20]</td>
+<td style="text-align: left;">0.01 [0.00–0.05]</td>
+<td style="text-align: left;">0.04 [0.02–0.08]</td>
+</tr>
+</tbody>
+</table></div></div>
+</div>
+<h2 data-number="9.5" id="implications-for-the-analysis-plan"><span class="header-section-number">9.5</span> Implications for the analysis plan</h2>
+<p>Four changes follow. First, the evidence rule in Section <a href="#sec:synthesis">8</a> now requires C1–C3 for the probable level. Second, the permutation test is used only for screening and for choosing <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>λ</mi><annotation encoding="application/x-tex">\lambda</annotation></semantics></math>; inference relies on the SSN model of Equation <a href="#eq:ssn">3</a>, which represents spatial dependence explicitly. Third, sampling designs should bracket individual candidates, or groups of candidates within one sub-catchment, with paired stations, because C3 cannot separate several candidates that lie between the same pair of stations. Fourth, recall is bounded by station density: only 27%, 57% and 78% of true connected sources had a station within <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><msub><mi>λ</mi><mrow><mi mathvariant="normal">t</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">u</mi><mi mathvariant="normal">e</mi></mrow></msub></mrow><annotation encoding="application/x-tex">3\lambda_{\mathrm{true}}</annotation></semantics></math> downstream in the three scenarios, so station placement should be optimised against the candidate inventory before fieldwork.</p>
+<h1 data-number="10" id="sec:ethics"><span class="header-section-number">10</span> Ethical, legal and safety safeguards</h1>
+<p>Mapping suspected illegal activity carries risks for communities, operators and researchers. Outputs are therefore described as candidate sites with calibrated probabilities, never as findings of illegality, and individual facilities are not named. Public products are aggregated to districts or 1 km grids; exact coordinates are shared only with competent authorities, such as the Department of Industrial Works and the Pollution Control Department, under data-sharing agreements. Thailand’s criminal defamation provisions have been used against researchers and activists, which reinforces the need for verification before any site-specific statement. Fieldwork is conducted on public land or with permission, in teams and in coordination with local authorities, and no attempt is made to enter facilities. Interviews or surveys, if any, require approval by an institutional ethics committee. Communities near processing sites, including households that depend economically on dismantling, are engaged and receive results in accessible form, and publications avoid stigmatising named villages. Code is released openly; sensitive coordinates are not.</p>
+<h1 data-number="11" id="sec:discussion"><span class="header-section-number">11</span> Expected contributions and limitations</h1>
+<p>The framework is expected to deliver (i) the first design-based national estimate of e-waste processing and dumping sites in Thailand, with uncertainty; (ii) causal evidence on whether policy shocks reduce or displace processing; and (iii) a transferable chain of attribution from orbit to sediment.</p>
+<p>Several limitations are anticipated. Persistent monsoon cloud cover reduces optical availability; SAR and thermal data mitigate but do not remove this gap. Most sites are smaller than a 30 m imaging-spectroscopy pixel, so material identification will be possible only for larger yards and stockpiles. Labels are biased towards sites that attracted complaints or enforcement; PU learning mitigates this bias but cannot fully correct it. Exposure-based identification assumes parallel trends conditional on fixed effects; pre-period coefficients test this assumption but cannot prove it. Legacy contamination and other industries may produce similar marker patterns, and mixing models can be non-unique when end members overlap; the four-criterion rule is designed to make such ambiguity explicit rather than to conceal it. Finally, the inventory captures detectable activity only. Operators adapt, and publication of results may itself change behaviour, which argues for repeated mapping rather than a single snapshot. The simulations in Section <a href="#sec:validation">9</a> quantify how station density and nested candidates limit attribution.</p>
+<h1 data-number="12" id="sec:plan"><span class="header-section-number">12</span> Work plan</h1>
+<p>The work is planned over 36 months (Figure <a href="#fig:gantt">8</a>). Modules 1 and 2 rely on open satellite archives and can begin immediately. Field campaigns for Module 3 are scheduled across two dry seasons and one wet season to capture hydrological contrasts, with laboratory analyses following each campaign. Each module concludes with a manuscript, so that the three papers can be read independently and together.</p>
+<figure id="fig:gantt" data-latex-placement="t">
+<img loading="lazy" src="figures/fig6_workplan.png" />
+<figcaption><b>Figure 8.</b> Indicative 36-month work plan. Diamonds mark manuscript submissions for Papers 1–3; field campaigns are aligned with dry and wet seasons.</figcaption>
+</figure>
+<h1 data-number="13" id="sec:conclusion"><span class="header-section-number">13</span> Conclusion</h1>
+<p>E-waste processing in Thailand leaves traces that satellites can detect and contaminants that only field geochemistry can measure. <em>From Space to Sediment</em> links the two through a national candidate inventory, a quasi-experimental analysis of how processing responds to policy, and an attribution rule that requires detection, connectivity, geochemistry and chronology to agree before a site is reported as a source. An open implementation computes along-network distances exactly on the real Bang Pakong network, and simulations showed that requiring geochemical evidence keeps the precision of probable and attributed sources at 0.84–0.90 and 0.85–0.95, whereas recall depends mainly on the density of sampling stations. By specifying data, designs, hypotheses and safeguards in advance, the framework is intended to make the resulting evidence credible to scientists, regulators and affected communities, and to be transferable to other countries in Southeast Asia that face similar pressures.</p>
+<h1 class="unnumbered" id="data-and-code-availability">Data and code availability</h1>
+<p>All satellite data described here are openly available or obtainable through research-access programmes. The maps in Figure <a href="#fig:study">1</a> use Natural Earth boundaries and coastlines <span class="citation" data-cites="naturalearth">(<a href="#ref-naturalearth" role="doc-biblioref">Natural Earth 2026</a>)</span>, HydroRIVERS v1.0 reaches with a mean discharge of at least 12 m<sup>3</sup> s<sup><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mn>1</mn></mrow><annotation encoding="application/x-tex">-1</annotation></semantics></math></sup> <span class="citation" data-cites="lehner2013">(<a href="#ref-lehner2013" role="doc-biblioref">Lehner and Grill 2013</a>)</span>, taken from a public extract for mainland Southeast Asia <span class="citation" data-cites="waterways">(<a href="#ref-waterways" role="doc-biblioref"><span class="nocase">oadtz</span> 2026</a>)</span>, and district boundaries from the OpenGISData-Thailand repository <span class="citation" data-cites="opengis">(<a href="#ref-opengis" role="doc-biblioref">OpenGISData-Thailand contributors 2026</a>)</span>. The Earth Engine screening script, the verification and attribution program, the simulation code and the scripts that reproduce all figures are provided as ancillary files with this preprint.</p>
+<h1 class="unnumbered" id="use-of-ai-tools">Use of AI tools</h1>
+<p>Drafting of the text and preparation of the figures were assisted by an AI system (Claude, Anthropic). The author reviewed all content and takes full responsibility for it.</p>
+<h1 class="unnumbered" id="references">References</h1>
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-appleby1978" class="csl-entry" role="listitem">
+Appleby, P. G., and F. Oldfield. 1978. <span>“The Calculation of Lead-210 Dates Assuming a Constant Rate of Supply of Unsupported <span><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi></mi><mn>210</mn></msup><annotation encoding="application/x-tex">^{210}</annotation></semantics></math>Pb</span> to the Sediment.”</span> <em>Catena</em> 5 (1): 1–8.
+</div>
+<div id="ref-balde2024" class="csl-entry" role="listitem">
+<span class="nocase">Baldé, Cornelis P., Ruediger Kuehr, Tales Yamamoto, Rosie McDonald, et al.</span> 2024. <em>The Global e-Waste Monitor 2024</em>. International Telecommunication Union (ITU); United Nations Institute for Training; Research (UNITAR).
+</div>
+<div id="ref-bekker2020" class="csl-entry" role="listitem">
+Bekker, Jessa, and Jesse Davis. 2020. <span>“Learning from Positive and Unlabeled Data: A Survey.”</span> <em>Machine Learning</em> 109 (4): 719–60.
+</div>
+<div id="ref-biancamaria2016" class="csl-entry" role="listitem">
+Biancamaria, Sylvain, Dennis P. Lettenmaier, and Tamlin M. Pavelsky. 2016. <span>“The <span>SWOT</span> Mission and Its Capabilities for Land Hydrology.”</span> <em>Surveys in Geophysics</em> 37 (2): 307–37.
+</div>
+<div id="ref-brooks2018" class="csl-entry" role="listitem">
+Brooks, Amy L., Shunli Wang, and Jenna R. Jambeck. 2018. <span>“The <span>Chinese</span> Import Ban and Its Impact on Global Plastic Waste Trade.”</span> <em>Science Advances</em> 4 (6): eaat0131.
+</div>
+<div id="ref-brown2025" class="csl-entry" role="listitem">
+<span class="nocase">Brown, Christopher F., Michal R. Kazmierski, Valerie J. Pasquarella, et al.</span> 2025. <em><span>AlphaEarth Foundations</span>: An Embedding Field Model for Accurate and Efficient Global Mapping from Sparse Label Data</em>. arXiv preprint.
+</div>
+<div id="ref-callaway2021" class="csl-entry" role="listitem">
+Callaway, Brantly, and Pedro H. C. Sant’Anna. 2021. <span>“Difference-in-Differences with Multiple Time Periods.”</span> <em>Journal of Econometrics</em> 225 (2): 200–230.
+</div>
+<div id="ref-cogliati2021" class="csl-entry" role="listitem">
+<span class="nocase">Cogliati, Sergio, Francesco Sarti, Leandro Chiarantini, Massimo Cosi, Rino Lorusso, et al.</span> 2021. <span>“The <span>PRISMA</span> Imaging Spectroscopy Mission: Overview and First Performance Analysis.”</span> <em>Remote Sensing of Environment</em> 262: 112499.
+</div>
+<div id="ref-copeland2004" class="csl-entry" role="listitem">
+Copeland, Brian R., and M. Scott Taylor. 2004. <span>“Trade, Growth, and the Environment.”</span> <em>Journal of Economic Literature</em> 42 (1): 7–71.
+</div>
+<div id="ref-drusch2012" class="csl-entry" role="listitem">
+<span class="nocase">Drusch, M., U. Del Bello, S. Carlier, O. Colin, V. Fernandez, et al.</span> 2012. <span>“Sentinel-2: <span>ESA</span>’s Optical High-Resolution Mission for <span>GMES</span> Operational Services.”</span> <em>Remote Sensing of Environment</em> 120: 25–36.
+</div>
+<div id="ref-dulaing2009" class="csl-entry" role="listitem">
+Du Laing, G., J. Rinklebe, B. Vandecasteele, E. Meers, and F. M. G. Tack. 2009. <span>“Trace Metal Behaviour in Estuarine and Riverine Floodplain Soils and Sediments: A Review.”</span> <em>Science of the Total Environment</em> 407 (13): 3972–85.
+</div>
+<div id="ref-dumelle2024" class="csl-entry" role="listitem">
+Dumelle, Michael, Erin E. Peterson, Jay M. Ver Hoef, Alan Pearse, and Daniel J. Isaak. 2024. <span>“<span>SSN2</span>: The Next Generation of Spatial Stream Network Modeling in <span>R</span>.”</span> <em>Journal of Open Source Software</em> 9 (99): 6389.
+</div>
+<div id="ref-fisher2020" class="csl-entry" role="listitem">
+<span class="nocase">Fisher, Joshua B., Brian Lee, Adam J. Purdy, Gregory H. Halverson, Matthew B. Dohlen, et al.</span> 2020. <span>“<span>ECOSTRESS</span>: <span>NASA</span>’s Next Generation Mission to Measure Evapotranspiration from the <span>International Space Station</span>.”</span> <em>Water Resources Research</em> 56 (4): e2019WR026058.
+</div>
+<div id="ref-garaba2018" class="csl-entry" role="listitem">
+Garaba, Shungudzemwoyo P., and Heidi M. Dierssen. 2018. <span>“An Airborne Remote Sensing Case Study of Synthetic Hydrocarbon Detection Using Short Wave Infrared Absorption Features Identified from Marine-Harvested Macro- and Microplastics.”</span> <em>Remote Sensing of Environment</em> 205: 224–35.
+</div>
+<div id="ref-goodmanbacon2021" class="csl-entry" role="listitem">
+Goodman-Bacon, Andrew. 2021. <span>“Difference-in-Differences with Variation in Treatment Timing.”</span> <em>Journal of Econometrics</em> 225 (2): 254–77.
+</div>
+<div id="ref-gorelick2017" class="csl-entry" role="listitem">
+Gorelick, Noel, Matt Hancher, Mike Dixon, Simon Ilyushchenko, David Thau, and Rebecca Moore. 2017. <span>“<span>Google Earth Engine</span>: Planetary-Scale Geospatial Analysis for Everyone.”</span> <em>Remote Sensing of Environment</em> 202: 18–27.
+</div>
+<div id="ref-grant2013" class="csl-entry" role="listitem">
+Grant, Kristen, Fiona C. Goldizen, Peter D. Sly, et al. 2013. <span>“Health Consequences of Exposure to e-Waste: A Systematic Review.”</span> <em>The Lancet Global Health</em> 1 (6): e350–61.
+</div>
+<div id="ref-guanter2015" class="csl-entry" role="listitem">
+<span class="nocase">Guanter, Luis, Hermann Kaufmann, Karl Segl, Saskia Foerster, Christian Rogass, et al.</span> 2015. <span>“The <span>EnMAP</span> Spaceborne Imaging Spectroscopy Mission for <span>Earth</span> Observation.”</span> <em>Remote Sensing</em> 7 (7): 8830–57.
+</div>
+<div id="ref-guo2023" class="csl-entry" role="listitem">
+<span class="nocase">Guo, Huadong, Changyong Dou, Hongyue Chen, Jianbo Liu, Bihong Fu, et al.</span> 2023. <span>“<span>SDGSAT-1</span>: The World’s First Scientific Satellite for Sustainable Development Goals.”</span> <em>Science Bulletin</em> 68 (1): 34–38.
+</div>
+<div id="ref-hawker2022" class="csl-entry" role="listitem">
+Hawker, Laurence, Peter Uhe, Luntadila Paulo, et al. 2022. <span>“A 30 m Global Map of Elevation with Forests and Buildings Removed.”</span> <em>Environmental Research Letters</em> 17 (2): 024016.
+</div>
+<div id="ref-keiser2019" class="csl-entry" role="listitem">
+Keiser, David A., and Joseph S. Shapiro. 2019. <span>“Consequences of the <span>Clean Water Act</span> and the Demand for Water Quality.”</span> <em>The Quarterly Journal of Economics</em> 134 (1): 349–96.
+</div>
+<div id="ref-komarek2008" class="csl-entry" role="listitem">
+Komárek, Michael, Vojtěch Ettler, Vladislav Chrastný, and Martin Mihaljevič. 2008. <span>“Lead Isotopes in Environmental Sciences: A Review.”</span> <em>Environment International</em> 34 (4): 562–77.
+</div>
+<div id="ref-kruse2023" class="csl-entry" role="listitem">
+<span class="nocase">Kruse, Caleb, Edward Boyda, Sally Chen, et al.</span> 2023. <span>“Satellite Monitoring of Terrestrial Plastic Waste.”</span> <em>PLOS ONE</em> 18 (1): e0278997.
+</div>
+<div id="ref-lehner2013" class="csl-entry" role="listitem">
+Lehner, Bernhard, and Günther Grill. 2013. <span>“Global River Hydrography and Network Routing: Baseline Data and New Approaches to Study the World’s Large River Systems.”</span> <em>Hydrological Processes</em> 27 (15): 2171–86.
+</div>
+<div id="ref-lepawsky2015" class="csl-entry" role="listitem">
+Lepawsky, Josh. 2015. <span>“The Changing Geography of Global Trade in Electronic Discards: Time to Rethink the e-Waste Problem.”</span> <em>The Geographical Journal</em> 181 (2): 147–59.
+</div>
+<div id="ref-leung2008" class="csl-entry" role="listitem">
+Leung, Anna O. W., Nurdan S. Duzgoren-Aydin, K. C. Cheung, and Ming H. Wong. 2008. <span>“Heavy Metals Concentrations of Surface Dust from e-Waste Recycling and Its Human Health Implications in Southeast <span>China</span>.”</span> <em>Environmental Science &amp; Technology</em> 42 (7): 2674–80.
+</div>
+<div id="ref-lin2017" class="csl-entry" role="listitem">
+Lin, Tsung-Yi, Priya Goyal, Ross Girshick, Kaiming He, and Piotr Dollár. 2017. <span>“Focal Loss for Dense Object Detection.”</span> <em>Proceedings of the IEEE International Conference on Computer Vision (ICCV)</em>, 2980–88.
+</div>
+<div id="ref-lipscomb2017" class="csl-entry" role="listitem">
+Lipscomb, Molly, and Ahmed Mushfiq Mobarak. 2017. <span>“Decentralization and Pollution Spillovers: Evidence from the Re-Drawing of County Borders in <span>Brazil</span>.”</span> <em>The Review of Economic Studies</em> 84 (1): 464–502.
+</div>
+<div id="ref-masek2020" class="csl-entry" role="listitem">
+Masek, Jeffrey G., Michael A. Wulder, Brian Markham, et al. 2020. <span>“<span>Landsat 9</span>: Empowering Open Science and Applications Through Continuity.”</span> <em>Remote Sensing of Environment</em> 248: 111968.
+</div>
+<div id="ref-muenhor2010" class="csl-entry" role="listitem">
+Muenhor, Dudsadee, Stuart Harrad, Nadeem Ali, and Adrian Covaci. 2010. <span>“Brominated Flame Retardants (<span>BFRs</span>) in Air and Dust from Electronic Waste Storage Facilities in <span>Thailand</span>.”</span> <em>Environment International</em> 36 (7): 690–98.
+</div>
+<div id="ref-naturalearth" class="csl-entry" role="listitem">
+Natural Earth. 2026. <em>Natural <span>Earth</span>: Free Vector and Raster Map Data at 1:10m, 1:50m and 1:110m Scales</em>. <a href="https://www.naturalearthdata.com" class="uri">Https://www.naturalearthdata.com</a>.
+</div>
+<div id="ref-niculescu2005" class="csl-entry" role="listitem">
+Niculescu-Mizil, Alexandru, and Rich Caruana. 2005. <span>“Predicting Good Probabilities with Supervised Learning.”</span> <em>Proceedings of the 22nd International Conference on Machine Learning</em>, 625–32.
+</div>
+<div id="ref-norris2014" class="csl-entry" role="listitem">
+Norris, Gary, Rachelle Duvall, Steve Brown, and Song Bai. 2014. <em><span>EPA</span> Positive Matrix Factorization (<span>PMF</span>) 5.0 Fundamentals and User Guide</em>. EPA/600/R-14/108. U.S. Environmental Protection Agency.
+</div>
+<div id="ref-waterways" class="csl-entry" role="listitem">
+<span class="nocase">oadtz</span>. 2026. <em>Waterways: River Network Extract of <span>HydroRIVERS</span> V1.0 for Mainland <span>Southeast Asia</span></em>. <a href="https://github.com/oadtz/waterways" class="uri">Https://github.com/oadtz/waterways</a>.
+</div>
+<div id="ref-olofsson2014" class="csl-entry" role="listitem">
+Olofsson, Pontus, Giles M. Foody, Martin Herold, Stephen V. Stehman, Curtis E. Woodcock, and Michael A. Wulder. 2014. <span>“Good Practices for Estimating Area and Assessing Accuracy of Land Change.”</span> <em>Remote Sensing of Environment</em> 148: 42–57.
+</div>
+<div id="ref-opengis" class="csl-entry" role="listitem">
+OpenGISData-Thailand contributors. 2026. <em><span>OpenGISData-Thailand</span>: Open Administrative Boundary Data for <span>Thailand</span></em>. <a href="https://github.com/chingchai/OpenGISData-Thailand" class="uri">Https://github.com/chingchai/OpenGISData-Thailand</a>.
+</div>
+<div id="ref-paatero1994" class="csl-entry" role="listitem">
+Paatero, Pentti, and Unto Tapper. 1994. <span>“Positive Matrix Factorization: A Non-Negative Factor Model with Optimal Utilization of Error Estimates of Data Values.”</span> <em>Environmetrics</em> 5 (2): 111–26.
+</div>
+<div id="ref-peterson2013" class="csl-entry" role="listitem">
+<span class="nocase">Peterson, Erin E., Jay M. Ver Hoef, Dan J. Isaak, Jeffrey A. Falke, et al.</span> 2013. <span>“Modelling Dendritic Ecological Networks in Space: An Integrated Network Perspective.”</span> <em>Ecology Letters</em> 16 (5): 707–19.
+</div>
+<div id="ref-preiss2006" class="csl-entry" role="listitem">
+Preiss, Mark, Douglas A. Gray, and Nick J. S. Stacy. 2006. <span>“Detecting Scene Changes Using Synthetic Aperture Radar Interferometry.”</span> <em>IEEE Transactions on Geoscience and Remote Sensing</em> 44 (8): 2041–54.
+</div>
+<div id="ref-puangprasert2019" class="csl-entry" role="listitem">
+Puangprasert, Sasima, and Tassanee Prueksasit. 2019. <span>“Health Risk Assessment of Airborne <span>Cd</span>, <span>Cu</span>, <span>Ni</span> and <span>Pb</span> for Electronic Waste Dismantling Workers in <span>Buriram</span> <span>Province</span>, <span>Thailand</span>.”</span> <em>Journal of Environmental Management</em> 252: 109601.
+</div>
+<div id="ref-roberts2017" class="csl-entry" role="listitem">
+<span class="nocase">Roberts, David R., Volker Bahn, Simone Ciuti, Mark S. Boyce, Jane Elith, et al.</span> 2017. <span>“Cross-Validation Strategies for Data with Temporal, Spatial, Hierarchical, or Phylogenetic Structure.”</span> <em>Ecography</em> 40 (8): 913–29.
+</div>
+<div id="ref-robinson2009" class="csl-entry" role="listitem">
+Robinson, Brett H. 2009. <span>“E-Waste: An Assessment of Global Production and Environmental Impacts.”</span> <em>Science of the Total Environment</em> 408 (2): 183–91.
+</div>
+<div id="ref-roman2018" class="csl-entry" role="listitem">
+<span class="nocase">Román, Miguel O., Zhuosen Wang, Qingsong Sun, Virginia Kalb, Steven D. Miller, et al.</span> 2018. <span>“<span>NASA</span>’s <span>Black Marble</span> Nighttime Lights Product Suite.”</span> <em>Remote Sensing of Environment</em> 210: 113–43.
+</div>
+<div id="ref-ronneberger2015" class="csl-entry" role="listitem">
+Ronneberger, Olaf, Philipp Fischer, and Thomas Brox. 2015. <span>“<span>U-Net</span>: Convolutional Networks for Biomedical Image Segmentation.”</span> <em>Medical Image Computing and Computer-Assisted Intervention – MICCAI 2015</em>, Lecture notes in computer science, vol. 9351: 234–41.
+</div>
+<div id="ref-schroeder2014" class="csl-entry" role="listitem">
+Schroeder, Wilfrid, Patricia Oliva, Louis Giglio, and Ivan A. Csiszar. 2014. <span>“The New <span>VIIRS</span> 375 m Active Fire Detection Data Product: Algorithm Description and Initial Assessment.”</span> <em>Remote Sensing of Environment</em> 143: 85–96.
+</div>
+<div id="ref-schroeder2016" class="csl-entry" role="listitem">
+Schroeder, Wilfrid, Patricia Oliva, Louis Giglio, Brad Quayle, Eckehard Lorenz, and Fabiano Morelli. 2016. <span>“Active Fire Detection Using <span>Landsat-8/OLI</span> Data.”</span> <em>Remote Sensing of Environment</em> 185: 210–20.
+</div>
+<div id="ref-basel2022" class="csl-entry" role="listitem">
+Secretariat of the Basel Convention. 2022. <em>Amendments to <span class="nocase">Annexes II, VIII and IX</span> to the <span>Basel Convention</span> on the Control of Transboundary Movements of Hazardous Wastes and Their Disposal (Electrical and Electronic Waste)</em>. Adopted at the fifteenth meeting of the Conference of the Parties, Geneva, June 2022; in force from 1 January 2025.
+</div>
+<div id="ref-stock2018" class="csl-entry" role="listitem">
+Stock, Brian C., Andrew L. Jackson, Eric J. Ward, Andrew C. Parnell, Donald L. Phillips, and Brice X. Semmens. 2018. <span>“Analyzing Mixing Systems Using a New Generation of <span>Bayesian</span> Tracer Mixing Models.”</span> <em>PeerJ</em> 6: e5096.
+</div>
+<div id="ref-sun2021" class="csl-entry" role="listitem">
+Sun, Liyang, and Sarah Abraham. 2021. <span>“Estimating Dynamic Treatment Effects in Event Studies with Heterogeneous Treatment Effects.”</span> <em>Journal of Econometrics</em> 225 (2): 175–99.
+</div>
+<div id="ref-sun2023" class="csl-entry" role="listitem">
+<span class="nocase">Sun, Xian, Dongshuo Yin, Fei Qin, Hongfeng Yu, Wanxuan Lu, et al.</span> 2023. <span>“Revealing Influencing Factors on Global Waste Distribution via Deep-Learning Based Dumpsite Detection from Satellite Imagery.”</span> <em>Nature Communications</em> 14: 1444.
+</div>
+<div id="ref-szwarcman2024" class="csl-entry" role="listitem">
+<span class="nocase">Szwarcman, Daniela, Sujit Roy, Paolo Fraccaro, et al.</span> 2024. <em><span>Prithvi-EO-2.0</span>: A Versatile Multi-Temporal Foundation Model for <span>Earth</span> Observation Applications</em>. arXiv preprint.
+</div>
+<div id="ref-torres2012" class="csl-entry" role="listitem">
+<span class="nocase">Torres, Ramón, Paul Snoeij, Dirk Geudtner, David Bibby, Malcolm Davidson, et al.</span> 2012. <span>“<span>GMES</span> <span>Sentinel-1</span> Mission.”</span> <em>Remote Sensing of Environment</em> 120: 9–24.
+</div>
+<div id="ref-torres2023" class="csl-entry" role="listitem">
+Torres, Rocio Nahime, and Piero Fraternali. 2023. <span>“<span>AerialWaste</span> Dataset for Landfill Discovery in Aerial and Satellite Images.”</span> <em>Scientific Data</em> 10: 63.
+</div>
+<div id="ref-twele2016" class="csl-entry" role="listitem">
+Twele, André, Wenxi Cao, Simon Plank, and Sandro Martinis. 2016. <span>“<span>Sentinel-1</span>-Based Flood Mapping: A Fully Automated Processing Chain.”</span> <em>International Journal of Remote Sensing</em> 37 (13): 2990–3004.
+</div>
+<div id="ref-verhoef2010" class="csl-entry" role="listitem">
+Ver Hoef, Jay M., and Erin E. Peterson. 2010. <span>“A Moving Average Approach for Spatial Statistical Models of Stream Networks.”</span> <em>Journal of the American Statistical Association</em> 105 (489): 6–18.
+</div>
+<div id="ref-wilson1927" class="csl-entry" role="listitem">
+Wilson, Edwin B. 1927. <span>“Probable Inference, the Law of Succession, and Statistical Inference.”</span> <em>Journal of the American Statistical Association</em> 22 (158): 209–12.
+</div>
+<div id="ref-vanderwoerd2015" class="csl-entry" role="listitem">
+Woerd, Hendrik J. van der, and Marcel R. Wernand. 2015. <span>“True Colour Classification of Natural Waters with Medium-Spectral Resolution Satellites: <span>SeaWiFS</span>, <span>MODIS</span>, <span>MERIS</span> and <span>OLCI</span>.”</span> <em>Sensors</em> 15 (10): 25663–80.
+</div>
+<div id="ref-wong2007" class="csl-entry" role="listitem">
+<span class="nocase">Wong, Ming H., S. C. Wu, W. J. Deng, et al.</span> 2007. <span>“Export of Toxic Chemicals – a Review of the Case of Uncontrolled Electronic-Waste Recycling.”</span> <em>Environmental Pollution</em> 149 (2): 131–40.
+</div>
+<div id="ref-yamazaki2019" class="csl-entry" role="listitem">
+Yamazaki, Dai, Daiki Ikeshima, Jeison Sosa, Paul D. Bates, George H. Allen, and Tamlin M. Pavelsky. 2019. <span>“<span>MERIT Hydro</span>: A High-Resolution Global Hydrography Map Based on Latest Topography Dataset.”</span> <em>Water Resources Research</em> 55 (6): 5053–73.
+</div>
+<div id="ref-zhu2014" class="csl-entry" role="listitem">
+Zhu, Zhe, and Curtis E. Woodcock. 2014. <span>“Continuous Change Detection and Classification of Land Cover Using All Available <span>Landsat</span> Data.”</span> <em>Remote Sensing of Environment</em> 144: 152–71.
+</div>
+</div>
+</article>
+<section class="cite" aria-label="How to cite"><h2>How to cite</h2><pre><code>@misc{chongmankhong2026space,
+  author       = {Chongmankhong, Thanatchon},
+  title        = {From Space to Sediment: An Integrated Multi-Sensor Remote Sensing and Geochemical Fingerprinting Framework for Detecting E-Waste Hotspots and Attributing River Contamination in Thailand},
+  year         = {2026},
+  howpublished = {Preprint},
+  url          = {https://thanatchon36.github.io/from-space-to-sediment/paper/}
+}</code></pre></section>
+<footer class="colophon">
+<p>Rendered from <code>paper/paper.tex</code> by <code>scripts/build_web.py</code>. Every number comes from <code>paper/sim_numbers.tex</code>, the same file the PDF uses; the PDF is authoritative.</p>
+</footer>
+</div>
+</body>
+</html>

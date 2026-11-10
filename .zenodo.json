@@ -1,0 +1,27 @@
+{
+  "title": "from-space-to-sediment",
+  "upload_type": "software",
+  "description": "Open framework and code for screening candidate e-waste processing and dumping sites in Thailand with multi-sensor satellite data (Google Earth Engine), verifying them against the national factory registry and public records, and attributing river contamination to upstream sources with along-network distances, an e-waste marker suite and a four-criterion evidence rule (detection, hydrological connectivity, geochemistry, chronology). Case study: the Bang Pakong basin. Companion software to the preprint \"From Space to Sediment: An Integrated Multi-Sensor Remote Sensing and Geochemical Fingerprinting Framework for Detecting E-Waste Hotspots and Attributing River Contamination in Thailand\".",
+  "creators": [
+    {
+      "name": "Chongmankhong, Thanatchon"
+    }
+  ],
+  "license": "mit",
+  "keywords": [
+    "electronic waste",
+    "remote sensing",
+    "source apportionment",
+    "river networks",
+    "Google Earth Engine",
+    "Thailand"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://thanatchon36.github.io/from-space-to-sediment/paper/",
+      "relation": "isDocumentedBy",
+      "resource_type": "publication-preprint",
+      "scheme": "url"
+    }
+  ]
+}

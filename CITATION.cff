@@ -1,15 +1,29 @@
 cff-version: 1.2.0
-message: "If you use this framework or code, please cite it as below."
-title: "From Space to Sediment: An Integrated Multi-Sensor Remote Sensing and Geochemical Fingerprinting Framework for Detecting E-Waste Hotspots and Attributing River Contamination in Thailand"
+message: "Please cite the paper (preferred-citation); if you use the code, also cite the software."
+title: "from-space-to-sediment: screening e-waste sites from satellite data and attributing river contamination in Thailand"
+abstract: >-
+  Open framework and code for screening candidate e-waste processing and dumping
+  sites in Thailand with multi-sensor satellite data (Google Earth Engine),
+  verifying them against the factory registry and public records, and
+  attributing river contamination to upstream sources along the river network,
+  with the Bang Pakong basin as the case study. Includes simulation-based
+  validation on the real Bang Pakong network.
+type: software
 authors:
   - family-names: Chongmankhong
     given-names: Thanatchon
 version: 2.0.0
 date-released: 2026-11-10
-type: software
-keywords:
-  - electronic waste
-  - remote sensing
-  - source apportionment
-  - river networks
-  - Thailand
+license: MIT
+repository-code: "https://github.com/thanatchon36/from-space-to-sediment"
+url: "https://thanatchon36.github.io/from-space-to-sediment/paper/"
+keywords: [electronic-waste, remote-sensing, source-apportionment, river-networks, earth-engine, thailand]
+preferred-citation:
+  type: generic
+  title: "From Space to Sediment: An Integrated Multi-Sensor Remote Sensing and Geochemical Fingerprinting Framework for Detecting E-Waste Hotspots and Attributing River Contamination in Thailand"
+  authors:
+    - family-names: Chongmankhong
+      given-names: Thanatchon
+  year: 2026
+  url: "https://thanatchon36.github.io/from-space-to-sediment/paper/"
+  notes: "Preprint (v2): framework, implementation and simulation-based validation; no real candidate sites."
