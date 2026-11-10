@@ -18,5 +18,9 @@ paper/*.fls
 paper/*.fdb_latexmk
 paper/*.blg
 paper/arxiv.tar.gz
+# generated from paper/paper.md by make paper (paper.pdf is kept)
+paper/paper.tex
+paper/paper_build.md
+paper/arxiv/
 .DS_Store
 *:Zone.Identifier

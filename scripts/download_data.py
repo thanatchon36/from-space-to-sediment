@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Download the third-party map data used by the figure scripts and sim_validate.py into data/.
+"""Download the third-party map data used by the figure scripts and `fs2s network` / `fs2s sim` into data/.
 Sources: Natural Earth (public domain); OpenGISData-Thailand districts (CC BY 4.0);
 HydroRIVERS v1.0 extract for mainland Southeast Asia from github.com/oadtz/waterways
 (HydroRIVERS: Lehner & Grill 2013 - check the HydroSHEDS licence terms)."""

@@ -7,7 +7,7 @@
 <meta name="description" content="$if(description)$$description$$else$$pagetitle$$endif$">
 <meta name="author" content="$for(author)$$author$$sep$, $endfor$">
 <style>
-/* Web reader for paper/paper.tex, built by scripts/build_web.py: one reading column
+/* Web reader for paper/paper.md, built by from_space_to_sediment.paper_web: one reading column
    (~46rem) with a results strip up top. System font stacks only: the page is a single self-contained
    file with no third-party requests. Colour tokens on :root, redefined for dark. */
 :root {
@@ -108,6 +108,11 @@ th { font-weight: 500; color: var(--ink-2); border-bottom-color: var(--ink-2); }
 .paper .eq-math { flex: 1; min-width: 0; overflow-x: auto; overflow-y: hidden; }
 .paper .eqno { font: 400 0.85rem var(--font-mono); color: var(--ink-2); }
 .paper #refs { font-size: 0.9rem; }
+/* the design principles are labelled (P1)-(P5), as in the PDF */
+.paper .plist ol { list-style: none; counter-reset: p; padding-left: 2.9em; }
+.paper .plist li { counter-increment: p; position: relative; }
+.paper .plist li::before { content: "(P" counter(p) ")"; position: absolute; left: -2.9em; }
+.paper dt { font-weight: 650; }
 .paper .csl-entry { margin: 0 0 0.6em; padding-left: 1.5em; text-indent: -1.5em; overflow-wrap: anywhere; }
 .cite { min-width: 0; }
 /* BibTeX keeps its lines intact (no mid-URL breaks); the block scrolls sideways on narrow screens. */

@@ -1,0 +1,20 @@
+\begin{table}[t]
+\centering
+\caption{Pre-specified hypotheses and the evidence used to test them.}
+\label{tab:hypotheses}
+\footnotesize
+\begin{tabularx}{\textwidth}{@{}L{0.75cm}YL{5.7cm}@{}}
+\toprule
+ID & Hypothesis & Test and evidence\\
+\midrule
+H1a & Multi-sensor fusion outperforms the best single-sensor model & Precision--recall AUC and F1 under spatial block cross-validation\\
+H1b & A non-trivial share of high-probability candidates lacks a registry match & Design-based estimate of the unmatched share, by region\\
+H2a & Site emergence increased in high-exposure districts after 2018 & Event-study coefficients $\beta_k$, $k\ge0$ (\cref{eq:es})\\
+H2b & Enforcement displaced activity to neighbouring districts & Spillover-ring estimates; direct versus net effects\\
+H2c & The 2025 Basel amendments reduced import-dependent but not household-scale activity & Heterogeneous post-2025 effects by site type\\
+H3a & Upstream e-waste loading raises downstream marker levels & SSN coefficient $\theta$ with propagated uncertainty (\cref{eq:ssn})\\
+H3b & The e-waste fraction increases downstream of candidates & Posterior source proportions at paired stations (\cref{eq:mix})\\
+H3c & Marker onset follows satellite-derived emergence & \textsuperscript{210}Pb chronology compared with $t_i$\\
+\bottomrule
+\end{tabularx}
+\end{table}

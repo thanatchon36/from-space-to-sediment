@@ -1,52 +1,49 @@
 PY ?= .venv/bin/python
 REPS ?= 150
 
-.PHONY: setup data selftest network sim figures banner paper web arxiv test all clean
+.PHONY: setup data synthetic selftest network sim figures banner paper web arxiv hf test all clean
 
-setup:          ## create venv and install dependencies (needs uv)
+setup:          ## create venv and install the package (needs uv)
 	uv venv .venv --python 3.12
-	uv pip install --python .venv/bin/python -r pyproject.toml --extra dev
+	uv pip install --python .venv/bin/python -e ".[dev,hub]"
 
 data:           ## third-party map data into data/ (Natural Earth, districts, HydroRIVERS extract)
 	$(PY) scripts/download_data.py
 
-selftest:       ## synthetic end-to-end run, no downloads -> tests/synthetic/out
-	$(PY) pipeline/make_synthetic_test.py tests/synthetic
-	$(PY) pipeline/fs2s_verify_trace.py \
-	  --candidates tests/synthetic/candidates.csv --factories tests/synthetic/diw_factories.csv \
-	  --known tests/synthetic/known_sites.csv --negatives tests/synthetic/hard_negatives.csv \
-	  --labels tests/synthetic/labels.csv --rivers tests/synthetic/rivers.geojson \
-	  --stations tests/synthetic/stations.csv --matrix sediment --cores tests/synthetic/cores.csv \
-	  --outdir tests/synthetic/out --n-perm 199
+synthetic:      ## synthetic end-to-end test data -> tests/synthetic. NEVER a substitute for real data
+	$(PY) -m from_space_to_sediment.cli synthetic
+
+selftest:       ## synthetic data + verification and attribution -> tests/synthetic/out (no downloads)
+	$(PY) -m from_space_to_sediment.cli selftest
 
 network:        ## network checks on the real Bang Pakong network -> results/sim_out (needs make data)
-	$(PY) pipeline/sim_validate.py --scenario -1
+	$(PY) -m from_space_to_sediment.cli network
 
-sim:            ## Monte Carlo scenarios 0-3, $(REPS) replicates each (about 0.6 s per replicate)
-	for s in 0 1 2 3; do $(PY) pipeline/sim_validate.py --scenario $$s --reps $(REPS) || exit 1; done
+sim:            ## Monte Carlo scenarios 0-3, $(REPS) replicates each (about 0.6 s per replicate; resumes)
+	$(PY) -m from_space_to_sediment.cli sim --reps $(REPS)
 
-figures:        ## redraw every paper figure, sim_numbers.tex and tab_validation.tex (needs make data)
-	for f in paper/figures_src/fig*.py; do $(PY) "$$f" || exit 1; done
+figures:        ## redraw every paper figure and the generated numbers (needs make data)
+	$(PY) -m from_space_to_sediment.cli figures
 
 banner:         ## README banner -> docs/assets/banner.png (needs make data)
 	$(PY) scripts/make_banner.py
 
-paper:          ## compile paper/paper.pdf (tectonic), then the web reader
-	cd paper && tectonic paper.tex
-	$(MAKE) web
+paper:          ## paper/paper.md -> paper.tex -> paper.pdf (pandoc + tectonic) and the web reader docs/paper/
+	$(PY) -m from_space_to_sediment.cli paper
 
-web:            ## web reader only -> docs/paper/ (pandoc)
-	$(PY) scripts/build_web.py
+web:            ## web reader only -> docs/paper/index.html (pandoc)
+	$(PY) -m from_space_to_sediment.cli web
 
-arxiv:          ## arXiv source bundle -> paper/arxiv.tar.gz
-	cd paper && tar -czf arxiv.tar.gz paper.tex arxiv.sty paper.bbl references.bib \
-	  sim_numbers.tex tab_validation.tex figures/*.pdf
-	@echo "wrote paper/arxiv.tar.gz"
+arxiv: paper    ## arXiv source bundle -> paper/arxiv.tar.gz
+	$(PY) scripts/arxiv_bundle.py
 
-test:           ## pytest: synthetic end-to-end run and unit checks
+hf:             ## publish the Hugging Face dataset (needs `hf auth login`)
+	$(PY) scripts/publish_hf.py
+
+test:
 	$(PY) -m pytest -q
 
 all: data network figures paper
 
 clean:
-	rm -rf tests/synthetic paper/arxiv.tar.gz paper/*.aux paper/*.log paper/*.out paper/*.blg
+	rm -rf tests/synthetic paper/paper_build.md paper/paper.tex paper/paper.log paper/arxiv paper/arxiv.tar.gz

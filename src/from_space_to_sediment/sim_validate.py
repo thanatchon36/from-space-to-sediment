@@ -1,16 +1,19 @@
-#!/usr/bin/env python3
-"""
-sim_validate.py - validation of fs2s_verify_trace.py
+"""Validation of verify_trace (paper, Section 9).
+
   Part A  network checks on the REAL Bang Pakong network (HydroRIVERS v1.0 extract):
           orientation inference, along-network distances vs an independent reference.
   Part B  Monte Carlo simulation: SYNTHETIC sites, factories, records and stations are
           generated on the real network topology; the pipeline is run unchanged and its
           outputs are compared with the known truth. No real site data are used, and no
           synthetic site locations are reported or mapped.
+
+    fs2s network                        # Part A -> results/sim_out
+    fs2s sim --scenario 0 --reps 150    # Part B, one scenario (0-3)
 """
+from __future__ import annotations
+
 import argparse
 import json
-import sys
 import time
 from pathlib import Path
 
@@ -19,12 +22,11 @@ import numpy as np
 import pandas as pd
 from shapely.geometry import LineString, Point
 
-sys.path.insert(0, str(Path(__file__).parent))
-import fs2s_verify_trace as fv  # noqa: E402
+from . import verify_trace as fv
+from .config import RESULTS_DIR, RIVERS_JSON
 
 CRS = "EPSG:32647"
 BP_MAIN = 41340295
-RIVERS_JSON = "data/rivers.json"   # public/data/rivers.json from github.com/oadtz/waterways (HydroRIVERS v1.0 extract)
 B = {"cu": 20.0, "pb": 15.0, "sn": 2.0, "sb": 0.8, "cd": 0.20, "ni": 25.0, "zn": 60.0}
 KAPPA = {"cu": 3.0, "pb": 4.0, "sn": 5.0, "sb": 5.0, "cd": 1.5, "ni": 0.3, "zn": 0.8}   # e-waste
 GAMMA = {"cu": 3.0, "pb": 0.3, "sn": 0.0, "sb": 0.0, "cd": 3.0, "ni": 2.0, "zn": 2.0}   # confounder
@@ -32,8 +34,8 @@ LAMBDAS = [1.0, 2.0, 5.0, 10.0, 20.0, 50.0]
 ARGS = argparse.Namespace(tau=0.6, snap_ok_m=500.0, flood_thr=0.10, ratio_thr=1.5, evidence_rule="count")
 
 
-def load_network():
-    d = json.load(open(RIVERS_JSON))
+def load_network(rivers_json=RIVERS_JSON):
+    d = json.load(open(rivers_json))
     rec = [{"HYRIV_ID": r["id"], "NEXT_DOWN": r["down"], "q": r["q"], "len_km": r["len"],
             "geometry": LineString(r["c"])} for r in d["reaches"]
            if r["main"] == BP_MAIN and len(r["c"]) > 1]
@@ -259,39 +261,42 @@ def replicate(net, rng, lam_true_km, pi_source, n_sites=60, n_st=25, n_conf=3, n
     return out
 
 
-def main():
-    ap = argparse.ArgumentParser()
-    ap.add_argument("--reps", type=int, default=150)
-    ap.add_argument("--n-perm", type=int, default=99)
-    ap.add_argument("--out", default="results/sim_out")
-    ap.add_argument("--rivers-json", default=None, help="path to the HydroRIVERS extract rivers.json")
-    ap.add_argument("--scenario", type=int, default=-1, help="-1 = network checks only; 0-3 = scenario")
-    a = ap.parse_args()
-    global RIVERS_JSON
-    if a.rivers_json:
-        RIVERS_JSON = a.rivers_json
-    out = Path(a.out); out.mkdir(exist_ok=True, parents=True)
-    raw, net = load_network()
-    if a.scenario < 0:
+def run(scenario: int = -1, reps: int = 150, n_perm: int = 99, out=RESULTS_DIR, rivers_json=RIVERS_JSON):
+    """scenario -1: network checks; 0-3: Monte Carlo scenario (resumes from an existing results file)."""
+    out = Path(out); out.mkdir(exist_ok=True, parents=True)
+    raw, net = load_network(rivers_json)
+    if scenario < 0:
         rng = np.random.default_rng(20261109)
         summary, pairs, dmid = network_checks(raw, net, rng)
         json.dump(summary, open(out / "network_checks.json", "w"), indent=2)
         pairs.to_csv(out / "network_pairs.csv", index=False)
         pd.Series(dmid, name="d_outlet_km").rename_axis("HYRIV_ID").to_csv(out / "reach_dist_outlet.csv")
         print("network checks:", json.dumps(summary, indent=1))
-        return
-    lam_true, pi = ((3.0, 0.25), (8.0, 0.25), (20.0, 0.25), (8.0, 0.0))[a.scenario]
-    path = out / f"sim_results_s{a.scenario}.csv"
+        return out / "network_checks.json"
+    lam_true, pi = ((3.0, 0.25), (8.0, 0.25), (20.0, 0.25), (8.0, 0.0))[scenario]
+    path = out / f"sim_results_s{scenario}.csv"
     rows = pd.read_csv(path).to_dict("records") if path.exists() else []   # resume
     t0 = time.time()
-    for k in range(len(rows), a.reps):
-        rng = np.random.default_rng([20261109, a.scenario, k])            # one stream per replicate
-        rows.append(dict(rep=k, **replicate(net, rng, lam_true, pi, n_perm=a.n_perm)))
+    for k in range(len(rows), reps):
+        rng = np.random.default_rng([20261109, scenario, k])              # one stream per replicate
+        rows.append(dict(rep=k, **replicate(net, rng, lam_true, pi, n_perm=n_perm)))
         if (k + 1) % 25 == 0:
-            pd.DataFrame(rows).to_csv(out / f"sim_results_s{a.scenario}.csv", index=False)
-            print(f"scenario {a.scenario}: {k + 1}/{a.reps} ({time.time() - t0:.0f} s)", flush=True)
-    pd.DataFrame(rows).to_csv(out / f"sim_results_s{a.scenario}.csv", index=False)
-    print(f"scenario {a.scenario} finished", flush=True)
+            pd.DataFrame(rows).to_csv(path, index=False)
+            print(f"scenario {scenario}: {k + 1}/{reps} ({time.time() - t0:.0f} s)", flush=True)
+    pd.DataFrame(rows).to_csv(path, index=False)
+    print(f"scenario {scenario} finished", flush=True)
+    return path
+
+
+def main(argv=None):
+    ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap.add_argument("--reps", type=int, default=150)
+    ap.add_argument("--n-perm", type=int, default=99)
+    ap.add_argument("--out", default=str(RESULTS_DIR))
+    ap.add_argument("--rivers-json", default=str(RIVERS_JSON), help="path to the HydroRIVERS extract rivers.json")
+    ap.add_argument("--scenario", type=int, default=-1, help="-1 = network checks only; 0-3 = scenario")
+    a = ap.parse_args(argv)
+    run(a.scenario, a.reps, a.n_perm, a.out, a.rivers_json)
 
 
 if __name__ == "__main__":

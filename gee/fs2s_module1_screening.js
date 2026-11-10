@@ -16,7 +16,7 @@
  *
  * READ BEFORE USE
  *  - screening_score is a heuristic in [0,1], NOT a calibrated probability.
- *    Calibrate it with verified labels in fs2s_verify_trace.py (--labels).
+ *    Calibrate it with verified labels in `fs2s verify` (--labels).
  *  - Outputs are CANDIDATES, not findings of illegality. Keep exact coordinates
  *    restricted and publish aggregated products only (paper, Section 9).
  *  - Sentinel-2 L2A is not available over Thailand before late 2018. The

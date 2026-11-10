@@ -1,8 +1,4 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
-fs2s_verify_trace.py
-====================
 From Space to Sediment - Module 1 verification and Module 3 downstream linkage.
 
 Input   candidate sites exported by fs2s_module1_screening.js (Google Earth Engine)
@@ -27,13 +23,12 @@ Outputs RESTRICTED tables contain coordinates; the PUBLIC table is aggregated to
         grid. All results are screening outputs, not findings of illegality.
 
 Example
-    python fs2s_verify_trace.py \
+    fs2s verify \
         --candidates bangpakong_candidates.csv --factories diw_factories.csv \
         --known known_sites.csv --negatives hard_negatives.csv \
         --rivers HydroRIVERS_v10_as.shp --stations stations.csv --matrix sediment \
         --admin subdistricts.geojson --outdir out_bangpakong
 
-Requires python>=3.9, numpy, pandas, geopandas>=0.12 (pyogrio), shapely>=2, scipy
 """
 from __future__ import annotations
 

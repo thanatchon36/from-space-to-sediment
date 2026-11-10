@@ -2,7 +2,7 @@ import geopandas as gpd
 import numpy as np
 from shapely.geometry import LineString
 
-import fs2s_verify_trace as fv
+from from_space_to_sediment import verify_trace as fv
 
 
 def test_parse_conc_handles_detection_limits():

@@ -1,0 +1,63 @@
+% pandoc template for paper/paper.tex (arXiv source). Filled by from_space_to_sediment.paper_build from
+% paper/paper.md; compiles with pdfLaTeX (arXiv) or tectonic. Do not edit paper.tex: edit paper.md.
+\documentclass[10pt]{article}
+\usepackage{arxiv}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{mathptmx}
+\usepackage[scaled=0.92]{helvet}
+\usepackage{textcomp}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb}
+\usepackage{bm}
+\usepackage{graphicx}
+\usepackage{booktabs,tabularx,array}
+\usepackage{ragged2e}
+\usepackage[font=small,labelfont=bf,labelsep=period,skip=5pt]{caption}
+\usepackage{enumitem}
+\usepackage[round,authoryear]{natbib}
+\usepackage{xcolor}
+\usepackage{xurl}
+\usepackage{hyperref}
+\usepackage[capitalise,noabbrev]{cleveref}
+
+\hypersetup{colorlinks=true, linkcolor={blue!45!black}, citecolor={blue!45!black}, urlcolor={blue!45!black},
+  pdftitle={$title-meta$$if(subtitle)$: $subtitle$$endif$},
+  pdfauthor={$author-meta$},
+  pdfkeywords={$for(keywords)$$keywords$$sep$, $endfor$}}
+
+\newcolumntype{L}[1]{>{\RaggedRight\arraybackslash}p{#1}}
+\newcolumntype{Y}{>{\RaggedRight\arraybackslash}X}
+\setlist{nosep,leftmargin=*}
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.15}
+\renewcommand{\topfraction}{0.92}
+\renewcommand{\bottomfraction}{0.8}
+\renewcommand{\textfraction}{0.06}
+\renewcommand{\floatpagefraction}{0.72}
+\setcounter{topnumber}{3}
+\setcounter{totalnumber}{4}
+\crefname{equation}{Equation}{Equations}
+% Macros pandoc's LaTeX writer emits.
+\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+\title{$title$$if(subtitle)$: $subtitle$$endif$}
+\author{$for(author)$\textbf{$author$}$sep$ \and $endfor$}
+\date{$date$}
+\renewcommand{\shorttitle}{$title$}
+\renewcommand{\headeright}{A Preprint -- $date$}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+$abstract$
+\end{abstract}
+\keywords{$for(keywords)$$keywords$$sep$ \textperiodcentered{} $endfor$}
+
+$body$
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\end{document}
