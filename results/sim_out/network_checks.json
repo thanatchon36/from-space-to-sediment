@@ -1,0 +1,13 @@
+{
+  "n_reaches": 240,
+  "total_length_km": 657.911326046889,
+  "orientation_agreement": 1.0,
+  "length_ratio_median": 0.9443439689597167,
+  "length_ratio_p05": 0.891388061140653,
+  "length_ratio_p95": 1.0098441584045028,
+  "pairs": 500,
+  "abs_err_m_median": 3.552713678800501e-12,
+  "abs_err_m_max": 8.526512829121202e-11,
+  "ms_per_pair": 5.391203901995141,
+  "max_dist_to_outlet_km": 280.0805789461098
+}

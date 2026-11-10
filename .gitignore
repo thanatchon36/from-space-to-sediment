@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+# third-party data (fetched by scripts/download_data.py)
+data/*
+!data/README.md
+# local runs and restricted outputs (contain exact coordinates)
+*_RESTRICTED*
+out*/
+tests/
+# LaTeX build files (paper.bbl is kept for arXiv)
+paper/*.aux
+paper/*.log
+paper/*.out
+paper/*.fls
+paper/*.fdb_latexmk
+paper/*.blg
+.DS_Store

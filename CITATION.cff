@@ -1,0 +1,15 @@
+cff-version: 1.2.0
+message: "If you use this framework or code, please cite it as below."
+title: "From Space to Sediment: An Integrated Multi-Sensor Remote Sensing and Geochemical Fingerprinting Framework for Detecting E-Waste Hotspots and Attributing River Contamination in Thailand"
+authors:
+  - family-names: Chongmankhong
+    given-names: Thanatchon
+version: 2.0.0
+date-released: 2026-11-10
+type: software
+keywords:
+  - electronic waste
+  - remote sensing
+  - source apportionment
+  - river networks
+  - Thailand

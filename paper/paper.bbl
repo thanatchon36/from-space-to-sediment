@@ -1,0 +1,426 @@
+\begin{thebibliography}{60}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Appleby and Oldfield(1978)]{appleby1978}
+P.~G. Appleby and F.~Oldfield.
+\newblock The calculation of lead-210 dates assuming a constant rate of supply
+  of unsupported {$^{210}$Pb} to the sediment.
+\newblock \emph{Catena}, 5\penalty0 (1):\penalty0 1--8, 1978.
+
+\bibitem[Bald{\'e} et~al.(2024)Bald{\'e}, Kuehr, Yamamoto, McDonald,
+  et~al.]{balde2024}
+Cornelis~P. Bald{\'e}, Ruediger Kuehr, Tales Yamamoto, Rosie McDonald, et~al.
+\newblock The global e-waste monitor 2024.
+\newblock Technical report, International Telecommunication Union (ITU) and
+  United Nations Institute for Training and Research (UNITAR), Geneva and Bonn,
+  2024.
+
+\bibitem[Bekker and Davis(2020)]{bekker2020}
+Jessa Bekker and Jesse Davis.
+\newblock Learning from positive and unlabeled data: a survey.
+\newblock \emph{Machine Learning}, 109\penalty0 (4):\penalty0 719--760, 2020.
+
+\bibitem[Biancamaria et~al.(2016)Biancamaria, Lettenmaier, and
+  Pavelsky]{biancamaria2016}
+Sylvain Biancamaria, Dennis~P. Lettenmaier, and Tamlin~M. Pavelsky.
+\newblock The {SWOT} mission and its capabilities for land hydrology.
+\newblock \emph{Surveys in Geophysics}, 37\penalty0 (2):\penalty0 307--337,
+  2016.
+
+\bibitem[Brooks et~al.(2018)Brooks, Wang, and Jambeck]{brooks2018}
+Amy~L. Brooks, Shunli Wang, and Jenna~R. Jambeck.
+\newblock The {Chinese} import ban and its impact on global plastic waste
+  trade.
+\newblock \emph{Science Advances}, 4\penalty0 (6):\penalty0 eaat0131, 2018.
+
+\bibitem[Brown et~al.(2025)Brown, Kazmierski, Pasquarella, et~al.]{brown2025}
+Christopher~F. Brown, Michal~R. Kazmierski, Valerie~J. Pasquarella, et~al.
+\newblock {AlphaEarth Foundations}: An embedding field model for accurate and
+  efficient global mapping from sparse label data.
+\newblock arXiv preprint, 2025.
+
+\bibitem[Callaway and Sant'Anna(2021)]{callaway2021}
+Brantly Callaway and Pedro H.~C. Sant'Anna.
+\newblock Difference-in-differences with multiple time periods.
+\newblock \emph{Journal of Econometrics}, 225\penalty0 (2):\penalty0 200--230,
+  2021.
+
+\bibitem[Cogliati et~al.(2021)Cogliati, Sarti, Chiarantini, Cosi, Lorusso,
+  et~al.]{cogliati2021}
+Sergio Cogliati, Francesco Sarti, Leandro Chiarantini, Massimo Cosi, Rino
+  Lorusso, et~al.
+\newblock The {PRISMA} imaging spectroscopy mission: overview and first
+  performance analysis.
+\newblock \emph{Remote Sensing of Environment}, 262:\penalty0 112499, 2021.
+
+\bibitem[Copeland and Taylor(2004)]{copeland2004}
+Brian~R. Copeland and M.~Scott Taylor.
+\newblock Trade, growth, and the environment.
+\newblock \emph{Journal of Economic Literature}, 42\penalty0 (1):\penalty0
+  7--71, 2004.
+
+\bibitem[Drusch et~al.(2012)Drusch, Del~Bello, Carlier, Colin, Fernandez,
+  et~al.]{drusch2012}
+M.~Drusch, U.~Del~Bello, S.~Carlier, O.~Colin, V.~Fernandez, et~al.
+\newblock Sentinel-2: {ESA}'s optical high-resolution mission for {GMES}
+  operational services.
+\newblock \emph{Remote Sensing of Environment}, 120:\penalty0 25--36, 2012.
+
+\bibitem[Du~Laing et~al.(2009)Du~Laing, Rinklebe, Vandecasteele, Meers, and
+  Tack]{dulaing2009}
+G.~Du~Laing, J.~Rinklebe, B.~Vandecasteele, E.~Meers, and F.~M.~G. Tack.
+\newblock Trace metal behaviour in estuarine and riverine floodplain soils and
+  sediments: A review.
+\newblock \emph{Science of the Total Environment}, 407\penalty0 (13):\penalty0
+  3972--3985, 2009.
+
+\bibitem[Dumelle et~al.(2024)Dumelle, Peterson, Ver~Hoef, Pearse, and
+  Isaak]{dumelle2024}
+Michael Dumelle, Erin~E. Peterson, Jay~M. Ver~Hoef, Alan Pearse, and Daniel~J.
+  Isaak.
+\newblock {SSN2}: The next generation of spatial stream network modeling in
+  {R}.
+\newblock \emph{Journal of Open Source Software}, 9\penalty0 (99):\penalty0
+  6389, 2024.
+
+\bibitem[Fisher et~al.(2020)Fisher, Lee, Purdy, Halverson, Dohlen,
+  et~al.]{fisher2020}
+Joshua~B. Fisher, Brian Lee, Adam~J. Purdy, Gregory~H. Halverson, Matthew~B.
+  Dohlen, et~al.
+\newblock {ECOSTRESS}: {NASA}'s next generation mission to measure
+  evapotranspiration from the {International Space Station}.
+\newblock \emph{Water Resources Research}, 56\penalty0 (4):\penalty0
+  e2019WR026058, 2020.
+
+\bibitem[Garaba and Dierssen(2018)]{garaba2018}
+Shungudzemwoyo~P. Garaba and Heidi~M. Dierssen.
+\newblock An airborne remote sensing case study of synthetic hydrocarbon
+  detection using short wave infrared absorption features identified from
+  marine-harvested macro- and microplastics.
+\newblock \emph{Remote Sensing of Environment}, 205:\penalty0 224--235, 2018.
+
+\bibitem[Goodman-Bacon(2021)]{goodmanbacon2021}
+Andrew Goodman-Bacon.
+\newblock Difference-in-differences with variation in treatment timing.
+\newblock \emph{Journal of Econometrics}, 225\penalty0 (2):\penalty0 254--277,
+  2021.
+
+\bibitem[Gorelick et~al.(2017)Gorelick, Hancher, Dixon, Ilyushchenko, Thau, and
+  Moore]{gorelick2017}
+Noel Gorelick, Matt Hancher, Mike Dixon, Simon Ilyushchenko, David Thau, and
+  Rebecca Moore.
+\newblock {Google Earth Engine}: Planetary-scale geospatial analysis for
+  everyone.
+\newblock \emph{Remote Sensing of Environment}, 202:\penalty0 18--27, 2017.
+
+\bibitem[Grant et~al.(2013)Grant, Goldizen, Sly, Brune, Neira, van~den Berg,
+  and Norman]{grant2013}
+Kristen Grant, Fiona~C. Goldizen, Peter~D. Sly, Marie-Noel Brune, Maria Neira,
+  Martin van~den Berg, and Rosana~E. Norman.
+\newblock Health consequences of exposure to e-waste: a systematic review.
+\newblock \emph{The Lancet Global Health}, 1\penalty0 (6):\penalty0 e350--e361,
+  2013.
+
+\bibitem[Guanter et~al.(2015)Guanter, Kaufmann, Segl, Foerster, Rogass,
+  et~al.]{guanter2015}
+Luis Guanter, Hermann Kaufmann, Karl Segl, Saskia Foerster, Christian Rogass,
+  et~al.
+\newblock The {EnMAP} spaceborne imaging spectroscopy mission for {Earth}
+  observation.
+\newblock \emph{Remote Sensing}, 7\penalty0 (7):\penalty0 8830--8857, 2015.
+
+\bibitem[Guo et~al.(2023)Guo, Dou, Chen, Liu, Fu, et~al.]{guo2023}
+Huadong Guo, Changyong Dou, Hongyue Chen, Jianbo Liu, Bihong Fu, et~al.
+\newblock {SDGSAT-1}: the world's first scientific satellite for sustainable
+  development goals.
+\newblock \emph{Science Bulletin}, 68\penalty0 (1):\penalty0 34--38, 2023.
+
+\bibitem[Hawker et~al.(2022)Hawker, Uhe, Paulo, Sosa, Savage, Sampson, and
+  Neal]{hawker2022}
+Laurence Hawker, Peter Uhe, Luntadila Paulo, Jeison Sosa, James Savage,
+  Christopher Sampson, and Jeffrey Neal.
+\newblock A 30 m global map of elevation with forests and buildings removed.
+\newblock \emph{Environmental Research Letters}, 17\penalty0 (2):\penalty0
+  024016, 2022.
+
+\bibitem[Keiser and Shapiro(2019)]{keiser2019}
+David~A. Keiser and Joseph~S. Shapiro.
+\newblock Consequences of the {Clean Water Act} and the demand for water
+  quality.
+\newblock \emph{The Quarterly Journal of Economics}, 134\penalty0 (1):\penalty0
+  349--396, 2019.
+
+\bibitem[Kom{\'a}rek et~al.(2008)Kom{\'a}rek, Ettler, Chrastn{\'y}, and
+  Mihaljevi{\v{c}}]{komarek2008}
+Michael Kom{\'a}rek, Vojt{\v{e}}ch Ettler, Vladislav Chrastn{\'y}, and Martin
+  Mihaljevi{\v{c}}.
+\newblock Lead isotopes in environmental sciences: A review.
+\newblock \emph{Environment International}, 34\penalty0 (4):\penalty0 562--577,
+  2008.
+
+\bibitem[Kruse et~al.(2023)Kruse, Boyda, Chen, et~al.]{kruse2023}
+Caleb Kruse, Edward Boyda, Sally Chen, et~al.
+\newblock Satellite monitoring of terrestrial plastic waste.
+\newblock \emph{PLOS ONE}, 18\penalty0 (1):\penalty0 e0278997, 2023.
+
+\bibitem[Lehner and Grill(2013)]{lehner2013}
+Bernhard Lehner and G{\"u}nther Grill.
+\newblock Global river hydrography and network routing: baseline data and new
+  approaches to study the world's large river systems.
+\newblock \emph{Hydrological Processes}, 27\penalty0 (15):\penalty0 2171--2186,
+  2013.
+
+\bibitem[Lepawsky(2015)]{lepawsky2015}
+Josh Lepawsky.
+\newblock The changing geography of global trade in electronic discards: time
+  to rethink the e-waste problem.
+\newblock \emph{The Geographical Journal}, 181\penalty0 (2):\penalty0 147--159,
+  2015.
+
+\bibitem[Leung et~al.(2008)Leung, Duzgoren-Aydin, Cheung, and Wong]{leung2008}
+Anna O.~W. Leung, Nurdan~S. Duzgoren-Aydin, K.~C. Cheung, and Ming~H. Wong.
+\newblock Heavy metals concentrations of surface dust from e-waste recycling
+  and its human health implications in southeast {China}.
+\newblock \emph{Environmental Science \& Technology}, 42\penalty0 (7):\penalty0
+  2674--2680, 2008.
+
+\bibitem[Lin et~al.(2017)Lin, Goyal, Girshick, He, and Doll{\'a}r]{lin2017}
+Tsung-Yi Lin, Priya Goyal, Ross Girshick, Kaiming He, and Piotr Doll{\'a}r.
+\newblock Focal loss for dense object detection.
+\newblock In \emph{Proceedings of the IEEE International Conference on Computer
+  Vision (ICCV)}, pages 2980--2988, 2017.
+
+\bibitem[Lipscomb and Mobarak(2017)]{lipscomb2017}
+Molly Lipscomb and Ahmed~Mushfiq Mobarak.
+\newblock Decentralization and pollution spillovers: Evidence from the
+  re-drawing of county borders in {Brazil}.
+\newblock \emph{The Review of Economic Studies}, 84\penalty0 (1):\penalty0
+  464--502, 2017.
+
+\bibitem[Masek et~al.(2020)Masek, Wulder, Markham, McCorkel, Crawford, Storey,
+  and Jenstrom]{masek2020}
+Jeffrey~G. Masek, Michael~A. Wulder, Brian Markham, Joel McCorkel,
+  Christopher~J. Crawford, James Storey, and Del~T. Jenstrom.
+\newblock {Landsat 9}: Empowering open science and applications through
+  continuity.
+\newblock \emph{Remote Sensing of Environment}, 248:\penalty0 111968, 2020.
+
+\bibitem[Muenhor et~al.(2010)Muenhor, Harrad, Ali, and Covaci]{muenhor2010}
+Dudsadee Muenhor, Stuart Harrad, Nadeem Ali, and Adrian Covaci.
+\newblock Brominated flame retardants ({BFRs}) in air and dust from electronic
+  waste storage facilities in {Thailand}.
+\newblock \emph{Environment International}, 36\penalty0 (7):\penalty0 690--698,
+  2010.
+
+\bibitem[{Natural Earth}(2026)]{naturalearth}
+{Natural Earth}.
+\newblock Natural {Earth}: free vector and raster map data at 1:10m, 1:50m and
+  1:110m scales.
+\newblock \url{https://www.naturalearthdata.com}, 2026.
+\newblock Public domain; accessed November 2026.
+
+\bibitem[Niculescu-Mizil and Caruana(2005)]{niculescu2005}
+Alexandru Niculescu-Mizil and Rich Caruana.
+\newblock Predicting good probabilities with supervised learning.
+\newblock In \emph{Proceedings of the 22nd International Conference on Machine
+  Learning}, pages 625--632, 2005.
+
+\bibitem[Norris et~al.(2014)Norris, Duvall, Brown, and Bai]{norris2014}
+Gary Norris, Rachelle Duvall, Steve Brown, and Song Bai.
+\newblock {EPA} positive matrix factorization ({PMF}) 5.0 fundamentals and user
+  guide.
+\newblock Technical Report EPA/600/R-14/108, U.S. Environmental Protection
+  Agency, Washington, DC, 2014.
+
+\bibitem[{oadtz}(2026)]{waterways}
+{oadtz}.
+\newblock waterways: river network extract of {HydroRIVERS} v1.0 for mainland
+  {Southeast Asia}.
+\newblock \url{https://github.com/oadtz/waterways}, 2026.
+\newblock Accessed November 2026.
+
+\bibitem[Olofsson et~al.(2014)Olofsson, Foody, Herold, Stehman, Woodcock, and
+  Wulder]{olofsson2014}
+Pontus Olofsson, Giles~M. Foody, Martin Herold, Stephen~V. Stehman, Curtis~E.
+  Woodcock, and Michael~A. Wulder.
+\newblock Good practices for estimating area and assessing accuracy of land
+  change.
+\newblock \emph{Remote Sensing of Environment}, 148:\penalty0 42--57, 2014.
+
+\bibitem[{OpenGISData-Thailand contributors}(2026)]{opengis}
+{OpenGISData-Thailand contributors}.
+\newblock {OpenGISData-Thailand}: open administrative boundary data for
+  {Thailand}.
+\newblock \url{https://github.com/chingchai/OpenGISData-Thailand}, 2026.
+\newblock CC BY 4.0; accessed November 2026.
+
+\bibitem[Paatero and Tapper(1994)]{paatero1994}
+Pentti Paatero and Unto Tapper.
+\newblock Positive matrix factorization: A non-negative factor model with
+  optimal utilization of error estimates of data values.
+\newblock \emph{Environmetrics}, 5\penalty0 (2):\penalty0 111--126, 1994.
+
+\bibitem[Peterson et~al.(2013)Peterson, Ver~Hoef, Isaak, Falke,
+  et~al.]{peterson2013}
+Erin~E. Peterson, Jay~M. Ver~Hoef, Dan~J. Isaak, Jeffrey~A. Falke, et~al.
+\newblock Modelling dendritic ecological networks in space: an integrated
+  network perspective.
+\newblock \emph{Ecology Letters}, 16\penalty0 (5):\penalty0 707--719, 2013.
+
+\bibitem[Preiss et~al.(2006)Preiss, Gray, and Stacy]{preiss2006}
+Mark Preiss, Douglas~A. Gray, and Nick J.~S. Stacy.
+\newblock Detecting scene changes using synthetic aperture radar
+  interferometry.
+\newblock \emph{IEEE Transactions on Geoscience and Remote Sensing},
+  44\penalty0 (8):\penalty0 2041--2054, 2006.
+
+\bibitem[Puangprasert and Prueksasit(2019)]{puangprasert2019}
+Sasima Puangprasert and Tassanee Prueksasit.
+\newblock Health risk assessment of airborne {Cd}, {Cu}, {Ni} and {Pb} for
+  electronic waste dismantling workers in {Buriram} {Province}, {Thailand}.
+\newblock \emph{Journal of Environmental Management}, 252:\penalty0 109601,
+  2019.
+
+\bibitem[Roberts et~al.(2017)Roberts, Bahn, Ciuti, Boyce, Elith,
+  et~al.]{roberts2017}
+David~R. Roberts, Volker Bahn, Simone Ciuti, Mark~S. Boyce, Jane Elith, et~al.
+\newblock Cross-validation strategies for data with temporal, spatial,
+  hierarchical, or phylogenetic structure.
+\newblock \emph{Ecography}, 40\penalty0 (8):\penalty0 913--929, 2017.
+
+\bibitem[Robinson(2009)]{robinson2009}
+Brett~H. Robinson.
+\newblock E-waste: An assessment of global production and environmental
+  impacts.
+\newblock \emph{Science of the Total Environment}, 408\penalty0 (2):\penalty0
+  183--191, 2009.
+
+\bibitem[Rom{\'a}n et~al.(2018)Rom{\'a}n, Wang, Sun, Kalb, Miller,
+  et~al.]{roman2018}
+Miguel~O. Rom{\'a}n, Zhuosen Wang, Qingsong Sun, Virginia Kalb, Steven~D.
+  Miller, et~al.
+\newblock {NASA}'s {Black Marble} nighttime lights product suite.
+\newblock \emph{Remote Sensing of Environment}, 210:\penalty0 113--143, 2018.
+
+\bibitem[Ronneberger et~al.(2015)Ronneberger, Fischer, and
+  Brox]{ronneberger2015}
+Olaf Ronneberger, Philipp Fischer, and Thomas Brox.
+\newblock {U-Net}: Convolutional networks for biomedical image segmentation.
+\newblock In \emph{Medical Image Computing and Computer-Assisted Intervention
+  -- MICCAI 2015}, volume 9351 of \emph{Lecture Notes in Computer Science},
+  pages 234--241. Springer, 2015.
+
+\bibitem[Schroeder et~al.(2014)Schroeder, Oliva, Giglio, and
+  Csiszar]{schroeder2014}
+Wilfrid Schroeder, Patricia Oliva, Louis Giglio, and Ivan~A. Csiszar.
+\newblock The new {VIIRS} 375 m active fire detection data product: Algorithm
+  description and initial assessment.
+\newblock \emph{Remote Sensing of Environment}, 143:\penalty0 85--96, 2014.
+
+\bibitem[Schroeder et~al.(2016)Schroeder, Oliva, Giglio, Quayle, Lorenz, and
+  Morelli]{schroeder2016}
+Wilfrid Schroeder, Patricia Oliva, Louis Giglio, Brad Quayle, Eckehard Lorenz,
+  and Fabiano Morelli.
+\newblock Active fire detection using {Landsat-8/OLI} data.
+\newblock \emph{Remote Sensing of Environment}, 185:\penalty0 210--220, 2016.
+
+\bibitem[{Secretariat of the Basel Convention}(2022)]{basel2022}
+{Secretariat of the Basel Convention}.
+\newblock Amendments to {Annexes II, VIII and IX} to the {Basel Convention} on
+  the control of transboundary movements of hazardous wastes and their disposal
+  (electrical and electronic waste).
+\newblock Adopted at the fifteenth meeting of the Conference of the Parties,
+  Geneva, June 2022; in force from 1 January 2025, 2022.
+
+\bibitem[Stock et~al.(2018)Stock, Jackson, Ward, Parnell, Phillips, and
+  Semmens]{stock2018}
+Brian~C. Stock, Andrew~L. Jackson, Eric~J. Ward, Andrew~C. Parnell, Donald~L.
+  Phillips, and Brice~X. Semmens.
+\newblock Analyzing mixing systems using a new generation of {Bayesian} tracer
+  mixing models.
+\newblock \emph{PeerJ}, 6:\penalty0 e5096, 2018.
+
+\bibitem[Sun and Abraham(2021)]{sun2021}
+Liyang Sun and Sarah Abraham.
+\newblock Estimating dynamic treatment effects in event studies with
+  heterogeneous treatment effects.
+\newblock \emph{Journal of Econometrics}, 225\penalty0 (2):\penalty0 175--199,
+  2021.
+
+\bibitem[Sun et~al.(2023)Sun, Yin, Qin, Yu, Lu, et~al.]{sun2023}
+Xian Sun, Dongshuo Yin, Fei Qin, Hongfeng Yu, Wanxuan Lu, et~al.
+\newblock Revealing influencing factors on global waste distribution via
+  deep-learning based dumpsite detection from satellite imagery.
+\newblock \emph{Nature Communications}, 14:\penalty0 1444, 2023.
+
+\bibitem[Szwarcman et~al.(2024)Szwarcman, Roy, Fraccaro, et~al.]{szwarcman2024}
+Daniela Szwarcman, Sujit Roy, Paolo Fraccaro, et~al.
+\newblock {Prithvi-EO-2.0}: A versatile multi-temporal foundation model for
+  {Earth} observation applications.
+\newblock arXiv preprint, 2024.
+
+\bibitem[Torres et~al.(2012)Torres, Snoeij, Geudtner, Bibby, Davidson,
+  et~al.]{torres2012}
+Ram{\'o}n Torres, Paul Snoeij, Dirk Geudtner, David Bibby, Malcolm Davidson,
+  et~al.
+\newblock {GMES} {Sentinel-1} mission.
+\newblock \emph{Remote Sensing of Environment}, 120:\penalty0 9--24, 2012.
+
+\bibitem[Torres and Fraternali(2023)]{torres2023}
+Rocio~Nahime Torres and Piero Fraternali.
+\newblock {AerialWaste} dataset for landfill discovery in aerial and satellite
+  images.
+\newblock \emph{Scientific Data}, 10:\penalty0 63, 2023.
+
+\bibitem[Twele et~al.(2016)Twele, Cao, Plank, and Martinis]{twele2016}
+Andr{\'e} Twele, Wenxi Cao, Simon Plank, and Sandro Martinis.
+\newblock {Sentinel-1}-based flood mapping: a fully automated processing chain.
+\newblock \emph{International Journal of Remote Sensing}, 37\penalty0
+  (13):\penalty0 2990--3004, 2016.
+
+\bibitem[van~der Woerd and Wernand(2015)]{vanderwoerd2015}
+Hendrik~J. van~der Woerd and Marcel~R. Wernand.
+\newblock True colour classification of natural waters with medium-spectral
+  resolution satellites: {SeaWiFS}, {MODIS}, {MERIS} and {OLCI}.
+\newblock \emph{Sensors}, 15\penalty0 (10):\penalty0 25663--25680, 2015.
+
+\bibitem[Ver~Hoef and Peterson(2010)]{verhoef2010}
+Jay~M. Ver~Hoef and Erin~E. Peterson.
+\newblock A moving average approach for spatial statistical models of stream
+  networks.
+\newblock \emph{Journal of the American Statistical Association}, 105\penalty0
+  (489):\penalty0 6--18, 2010.
+
+\bibitem[Wilson(1927)]{wilson1927}
+Edwin~B. Wilson.
+\newblock Probable inference, the law of succession, and statistical inference.
+\newblock \emph{Journal of the American Statistical Association}, 22\penalty0
+  (158):\penalty0 209--212, 1927.
+
+\bibitem[Wong et~al.(2007)Wong, Wu, Deng, Yu, Luo, Leung, et~al.]{wong2007}
+Ming~H. Wong, S.~C. Wu, W.~J. Deng, X.~Z. Yu, Q.~Luo, A.~O.~W. Leung, et~al.
+\newblock Export of toxic chemicals -- a review of the case of uncontrolled
+  electronic-waste recycling.
+\newblock \emph{Environmental Pollution}, 149\penalty0 (2):\penalty0 131--140,
+  2007.
+
+\bibitem[Yamazaki et~al.(2019)Yamazaki, Ikeshima, Sosa, Bates, Allen, and
+  Pavelsky]{yamazaki2019}
+Dai Yamazaki, Daiki Ikeshima, Jeison Sosa, Paul~D. Bates, George~H. Allen, and
+  Tamlin~M. Pavelsky.
+\newblock {MERIT Hydro}: A high-resolution global hydrography map based on
+  latest topography dataset.
+\newblock \emph{Water Resources Research}, 55\penalty0 (6):\penalty0
+  5053--5073, 2019.
+
+\bibitem[Zhu and Woodcock(2014)]{zhu2014}
+Zhe Zhu and Curtis~E. Woodcock.
+\newblock Continuous change detection and classification of land cover using
+  all available {Landsat} data.
+\newblock \emph{Remote Sensing of Environment}, 144:\penalty0 152--171, 2014.
+
+\end{thebibliography}
