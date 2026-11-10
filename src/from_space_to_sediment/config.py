@@ -14,3 +14,4 @@ SYNTHETIC_DIR = ROOT / "tests" / "synthetic"
 REPO_URL = "https://github.com/thanatchon36/from-space-to-sediment"
 PAPER_URL = "https://thanatchon36.github.io/from-space-to-sediment/paper/"
 DATA_URL = "https://huggingface.co/datasets/thanatchon36/from-space-to-sediment"
+CONCEPT_DOI = "10.5281/zenodo.24102402"   # Zenodo concept DOI: always resolves to the latest release

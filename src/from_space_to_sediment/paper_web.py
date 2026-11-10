@@ -22,7 +22,7 @@ import sys
 import tempfile
 from pathlib import Path
 
-from .config import DATA_URL, DOCS_DIR, PAPER_DIR, PAPER_URL, REPO_URL
+from .config import CONCEPT_DOI, DATA_URL, DOCS_DIR, PAPER_DIR, PAPER_URL, REPO_URL
 from .paper_build import PaperBuildError, fill, load_numbers
 
 OUT_DIR = DOCS_DIR / "paper"
@@ -317,6 +317,7 @@ def build_web(paper_dir: Path = PAPER_DIR, out_dir: Path = OUT_DIR) -> Path:
         '<li><a href="paper.pdf">Download PDF</a></li>'
         f'<li><a href="{REPO_URL}">Code and replication</a></li>'
         f'<li><a href="{DATA_URL}">Data (Hugging Face)</a></li>'
+        f'<li><a href="https://doi.org/{CONCEPT_DOI}">Zenodo archive</a></li>'
     )
     title = re.search(r"<h1>(.*?)</h1>", page, re.DOTALL).group(1)
     subtitle = re.search(r'<p class="subtitle">(.*?)</p>', page, re.DOTALL)
@@ -327,6 +328,7 @@ def build_web(paper_dir: Path = PAPER_DIR, out_dir: Path = OUT_DIR) -> Path:
         f"  title        = {{{full_title}}},\n"
         "  year         = {2026},\n"
         "  howpublished = {Preprint},\n"
+        f"  doi          = {{{CONCEPT_DOI}}},\n"
         f"  url          = {{{PAPER_URL}}}\n"
         "}"
     )

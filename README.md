@@ -7,6 +7,7 @@
 <a href="paper/paper.pdf"><img src="https://img.shields.io/badge/paper-PDF-2a9fb0?style=flat-square&labelColor=0b1020" alt="Paper PDF"></a>
 <a href="docs/data_sources.md"><img src="https://img.shields.io/badge/sites-none%20published-b0560f?style=flat-square&labelColor=0b1020" alt="Sites: none published"></a>
 <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-a8e6ee?style=flat-square&labelColor=0b1020" alt="License MIT"></a>
+<a href="https://zenodo.org/badge/latestdoi/1452377468"><img src="https://zenodo.org/badge/1452377468.svg" alt="DOI"></a>
 <a href="https://huggingface.co/datasets/thanatchon36/from-space-to-sediment"><img src="https://img.shields.io/badge/%F0%9F%A4%97%20dataset-from--space--to--sediment-2a9fb0?style=flat-square&labelColor=0b1020" alt="Hugging Face dataset"></a>
 </p>
 
@@ -191,7 +192,8 @@ Section 11.
 
 ## Citation
 
-See [`CITATION.cff`](CITATION.cff); each release is archived on Zenodo. License: MIT ([`LICENSE`](LICENSE)).
+See [`CITATION.cff`](CITATION.cff); each release is archived on Zenodo (DOI badge above,
+[10.5281/zenodo.24102402](https://doi.org/10.5281/zenodo.24102402)). License: MIT ([`LICENSE`](LICENSE)).
 
 ## AI assistance
 

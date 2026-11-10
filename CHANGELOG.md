@@ -4,6 +4,12 @@ All notable changes to this project are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
 [Semantic Versioning](https://semver.org/).
 
+## [Unreleased]
+
+### Added
+- Zenodo DOI [10.5281/zenodo.24102402](https://doi.org/10.5281/zenodo.24102402) in the README, `CITATION.cff`,
+  the web reader and the Hugging Face dataset card.
+
 ## [2.0.0] - 2026-11-10
 
 ### Added
